@@ -26,7 +26,7 @@ public abstract class EntityBean<Entity, EntityId> {
     protected EntityManager em;
 
     private final Class<Entity> entityClass;
-    
+    //Test hier
     /**
      * Dieser Konstruktor muss von der erbenden Klasse aufgerufen werden, um
      * das Klassenobjekt der Entity zu setzen. Sonst lässt sich die Methode
