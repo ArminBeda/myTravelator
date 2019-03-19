@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Aufgaben
+        Liste der Reisen
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,11 +28,11 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/tasks/task/new/"/>">Reise anlegen</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Kategorien bearbeiten</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Reise bearbeiten</a>
         </div>
     </jsp:attribute>
 

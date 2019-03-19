@@ -20,7 +20,7 @@
                 Aufgabe bearbeiten
             </c:when>
             <c:otherwise>
-                Aufgabe anlegen
+                Reise anlegen
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
@@ -35,7 +35,7 @@
         </div>
         
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
         </div>
     </jsp:attribute>
 
