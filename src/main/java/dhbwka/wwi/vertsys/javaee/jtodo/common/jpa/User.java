@@ -46,6 +46,14 @@ public class User implements Serializable {
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
     
+    @Column(name = "last_name", length = 64)
+    @NotNull(message = "Bitte tragen Sie einen Nachnamen ein.")
+    private String last_name;
+    
+       @Column(name="first_name", length = 64)
+    @NotNull(message = "Bitte tragen Sie einen Vornamen ein.")
+    private String first_name;
+    
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
         public String password = "";
@@ -57,14 +65,6 @@ public class User implements Serializable {
     @NotNull(message = "Das Passwort darf nicht leer sein.")
     private String passwordHash;
     
-    @Column(name = "last_name", length = 64)
-    @NotNull(message = "Bitte tragen Sie einen Nachnamen ein.")
-    private String last_name;
-    
-    
-    @Column(name="first_name", length = 64)
-    @NotNull(message = "Bitte tragen Sie einen Vornamen ein.")
-    private String first_name;
 
     @ElementCollection
     @CollectionTable(
@@ -87,11 +87,12 @@ public class User implements Serializable {
         this.passwordHash = this.hashPassword(password);
     }
 
-    public User(String username, String passwordHash, String last_name, String first_name) {
+    public User(String username, String password, String last_name, String first_name) {
         this.username = username;
-        this.passwordHash = passwordHash;
+        this.password.password = password;
         this.last_name = last_name;
         this.first_name = first_name;
+        this.passwordHash = this.hashPassword(password);
     }
     
     
