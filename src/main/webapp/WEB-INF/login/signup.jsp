@@ -22,6 +22,7 @@
 
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/sign_up_style.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -82,7 +83,7 @@
                     
 
                     <%-- Button zum Abschicken --%>
-                    <div class="side-by-side">
+                    <div id="Sign_up_Register_Button" class="side-by-side">
                         <button class="icon-pencil" type="submit">
                             Registrieren
                         </button>
