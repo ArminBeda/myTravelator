@@ -87,7 +87,7 @@ public class User implements Serializable {
         this.passwordHash = this.hashPassword(password);
     }
 
-    public User(String username, String password, String last_name, String first_name) {
+    public User(String username, String password, String first_name, String last_name) {
         this.username = username;
         this.password.password = password;
         this.last_name = last_name;
