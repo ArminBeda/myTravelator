@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.dashboard.web;
+package dhbwka.wwi.vertsys.javaee.jtodo.settings.web;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.jtodo.dashboard.ejb.DashboardSection;
@@ -22,14 +22,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet für die Startseite mit dem Übersichts-Dashboard.
+ *
+ * @author yusefoenkol
  */
-@WebServlet(urlPatterns = {"/app/dashboard/"})
-public class DashboardServlet extends HttpServlet {
-
+/**
+ * Servlet für die Benutzereinstellungen.
+ */
+@WebServlet(urlPatterns = {"/app/settings/"})
+public class SettingsServlet extends HttpServlet{
+    
     // Kacheln für Aufgaben
     @EJB(beanName = "tasks")
-    DashboardContentProvider taskContent;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,11 +41,9 @@ public class DashboardServlet extends HttpServlet {
         // Dashboard-Rubriken und Kacheln erzeugen und im Request Context ablegen
         List<DashboardSection> sections = new ArrayList<>();
         request.setAttribute("sections", sections);
-        
-        taskContent.createDashboardContent(sections);
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);
     }
-
+    
 }

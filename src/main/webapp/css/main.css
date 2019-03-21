@@ -89,10 +89,11 @@ header, main {
 
 /* Farben für Links */
 a, a:visited {
-    color: rgb(193, 33, 33);
+    color: rgb(255, 247, 247);
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+    color: rgb(204, 193, 193);
 }

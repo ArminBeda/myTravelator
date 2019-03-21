@@ -43,7 +43,7 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 }
 
 .tile a {
-    color: #606060 !important;
+    color: #ffeded !important;
     text-decoration: none !important;
 }
 
@@ -85,7 +85,7 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 }
 
 .tile.status-all .content {
-    background-color: #f5f5f5;
+    background-color: #ffffff;
     font-weight: bold;
 }
 

@@ -34,6 +34,10 @@
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/categories/"/>">Reiseziele bearbeiten</a>
         </div>
+        
+        <div class="menuitem menu-right ">
+            <a href="<c:url value="/app/tasks/categories/"/>">Einstellungen</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
