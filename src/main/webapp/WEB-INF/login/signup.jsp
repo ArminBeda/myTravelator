@@ -22,7 +22,7 @@
 
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/login.css"/>" />
-        <link rel="stylesheet" href="<c:url value="/css/sign_up_style.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/user_styling.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">

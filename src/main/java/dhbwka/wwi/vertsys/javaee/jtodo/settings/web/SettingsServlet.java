@@ -43,7 +43,7 @@ public class SettingsServlet extends HttpServlet{
         request.setAttribute("sections", sections);
 
         // Anfrage an die JSP weiterleiten
-        request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/change/change_userdata.jsp").forward(request, response);
     }
     
 }
