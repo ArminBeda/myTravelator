@@ -12,7 +12,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Userdaten bearbeiten
+        Einstellungen
     </jsp:attribute>
         
         <jsp:attribute name="head">
@@ -29,7 +29,7 @@
         
         <jsp:attribute name="content">
             <div class="container">
-            <form method="post" class="stacked">
+            <form method="get" class="stacked">
                 <div class="column">
                     <%-- CSRF-Token --%>
                     <input type="hidden" name="csrf_token" value="${csrf_token}">
@@ -40,7 +40,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
+                        <input type="text" name="username" value="${s}">
                     </div>
                     
                     
@@ -59,23 +59,6 @@
                     <div class="side-by-side">
                         <input type="text" name="signup_first_name" value="${signup_form.values["signup_first_name"][0]}">
                     </div>
-
-                    <label for="signup_password1">
-                        Passwort:
-                        <span class="required">*</span>
-                    </label>
-                    <div class="side-by-side">
-                        <input type="password" name="signup_password1" value="${signup_form.values["signup_password1"][0]}">
-                    </div>
-
-                    <label for="signup_password2">
-                        Passwort (wdh.):
-                        <span class="required">*</span>
-                    </label>
-                    <div class="side-by-side">
-                        <input type="password" name="signup_password2" value="${signup_form.values["signup_password2"][0]}">
-                    </div>
-                    
                     
 
                     <%-- Button zum Abschicken --%>

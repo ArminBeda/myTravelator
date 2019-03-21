@@ -9,10 +9,13 @@
  */
 package dhbwka.wwi.vertsys.javaee.jtodo.settings.web;
 
+import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.jtodo.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.jtodo.dashboard.ejb.DashboardSection;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -32,7 +35,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SettingsServlet extends HttpServlet{
     
     // Kacheln für Aufgaben
-    @EJB(beanName = "tasks")
+    @EJB(beanName = "UserBean")
+    UserBean userbean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,6 +48,11 @@ public class SettingsServlet extends HttpServlet{
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/change/change_userdata.jsp").forward(request, response);
+        
+        
+        User user = userbean.getCurrentUser();
+        
+        request.setAttribute("username", user.getUsername());
     }
     
 }
