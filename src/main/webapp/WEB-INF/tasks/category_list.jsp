@@ -39,7 +39,7 @@
 
             <%-- Feld zum Anlegen einer neuen Kategorie --%>
             <div class="column margin">
-                <label for="j_username">Neues Reiseziel:</label>
+                <label for="j_username">Neues Land:</label>
                 <input type="text" name="name" value="${categories_form.values["name"][0]}">
 
                 <button type="submit" name="action" value="create" class="icon-pencil">
@@ -60,7 +60,7 @@
             <c:choose>
                 <c:when test="${empty categories}">
                     <p>
-                        Es sind noch keine Reiseziele vorhanden.
+                        Es sind noch keine Länder angegeben. 🌍
                     </p>
                 </c:when>
                 <c:otherwise>

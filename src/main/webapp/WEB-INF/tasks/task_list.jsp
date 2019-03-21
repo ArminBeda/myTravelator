@@ -39,10 +39,10 @@
     <jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
+            <input type="text" name="search_text" value="${param.search_text}" placeholder="Ort"/>
 
             <select name="search_category">
-                <option value="">Alle Kategorien</option>
+                <option value="">Alle Länder</option>
 
                 <c:forEach items="${categories}" var="category">
                     <option value="${category.id}" ${param.search_category == category.id ? 'selected' : ''}>
@@ -52,7 +52,7 @@
             </select>
 
             <select name="search_status">
-                <option value="">Alle Stati</option>
+                <option value="">Status</option>
 
                 <c:forEach items="${statuses}" var="status">
                     <option value="${status}" ${param.search_status == status ? 'selected' : ''}>
@@ -70,7 +70,7 @@
         <c:choose>
             <c:when test="${empty tasks}">
                 <p>
-                    Es wurden keine Aufgaben gefunden. 🐈
+                    Es wurden keine Reisen gefunden.
                 </p>
             </c:when>
             <c:otherwise>
@@ -79,8 +79,8 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Bezeichnung</th>
-                            <th>Kategorie</th>
+                            <th>Ort</th>
+                            <th>Land</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
                             <th>Fällig am</th>
