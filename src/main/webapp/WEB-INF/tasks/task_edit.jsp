@@ -51,10 +51,10 @@
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="task_category">Kategorie:</label>
+                <label for="task_category">Land:</label>
                 <div class="side-by-side">
                     <select name="task_category">
-                        <option value="">Keine Kategorie</option>
+                        <option value="">Bitte ein Land auswählen</option>
 
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
@@ -65,12 +65,14 @@
                 </div>
 
                 <label for="task_due_date">
-                    Fällig am:
+                    Zeitraum:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">
-                    <input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">
+                    <!--<input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">-->
+                    <input type="text" name="task_due_date" placeholder="Von">
+                    <input type="text" name="task_due_date" placeholder="Bis">
+                    <!--<input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">-->
                 </div>
 
                 <label for="task_status">
@@ -88,7 +90,7 @@
                 </div>
 
                 <label for="task_short_text">
-                    Bezeichnung:
+                    Ort:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
