@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,6 +70,7 @@ public class TaskEditServlet extends HttpServlet {
             // daher Formulardaten aus dem Datenbankobjekt übernehmen
             request.setAttribute("task_form", this.createTaskForm(task));
         }
+        
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/tasks/task_edit.jsp").forward(request, response);
@@ -112,8 +114,8 @@ public class TaskEditServlet extends HttpServlet {
         List<String> errors = new ArrayList<>();
 
         String taskCategory = request.getParameter("task_category");
-        String taskDueDate = request.getParameter("task_due_date");
-        String taskDueTime = request.getParameter("task_due_time");
+        String taskvonDate = request.getParameter("task_von_date");
+        String taskbisDate = request.getParameter("task_bis_date");
         String taskStatus = request.getParameter("task_status");
         String taskShortText = request.getParameter("task_short_text");
         String taskLongText = request.getParameter("task_long_text");
@@ -128,19 +130,19 @@ public class TaskEditServlet extends HttpServlet {
             }
         }
 
-        Date dueDate = WebUtils.parseDate(taskDueDate);
-        Time dueTime = WebUtils.parseTime(taskDueTime);
+        Date vonDate = WebUtils.parseDate(taskvonDate);
+        Date bisDate = WebUtils.parseDate(taskbisDate);
 
-        if (dueDate != null) {
-            task.setDueDate(dueDate);
+        if (vonDate != null) {
+            task.setvonDate(vonDate);
         } else {
             errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
-        if (dueTime != null) {
-            task.setDueTime(dueTime);
+        if (bisDate != null) {
+            task.setvonDate(vonDate);
         } else {
-            errors.add("Die Uhrzeit muss dem Format hh:mm:ss entsprechen.");
+            errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
         try {
@@ -207,8 +209,8 @@ public class TaskEditServlet extends HttpServlet {
         // Zunächst davon ausgehen, dass ein neuer Satz angelegt werden soll
         Task task = new Task();
         task.setOwner(this.userBean.getCurrentUser());
-        task.setDueDate(new Date(System.currentTimeMillis()));
-        task.setDueTime(new Time(System.currentTimeMillis()));
+        task.setvonDate(new Date(System.currentTimeMillis()));
+        task.setbisDate(new Date(System.currentTimeMillis()));
 
         // ID aus der URL herausschneiden
         String taskId = request.getPathInfo();
@@ -256,12 +258,12 @@ public class TaskEditServlet extends HttpServlet {
             });
         }
 
-        values.put("task_due_date", new String[]{
-            WebUtils.formatDate(task.getDueDate())
+        values.put("task_von_date", new String[]{
+            WebUtils.formatDate(task.getvonDate())
         });
 
-        values.put("task_due_time", new String[]{
-            WebUtils.formatTime(task.getDueTime())
+        values.put("task_bis_date", new String[]{
+            WebUtils.formatDate(task.getbisDate())
         });
 
         values.put("task_status", new String[]{

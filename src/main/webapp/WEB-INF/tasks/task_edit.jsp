@@ -70,8 +70,8 @@
                 </label>
                 <div class="side-by-side">
                     <!--<input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">-->
-                    <input type="text" name="task_due_date" placeholder="Von">
-                    <input type="text" name="task_due_date" placeholder="Bis">
+                    <input type="text" name="task_von_date" placeholder="Von:">
+                    <input type="text" name="task_bis_date" placeholder="Bis:">
                     <!--<input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">-->
                 </div>
 
