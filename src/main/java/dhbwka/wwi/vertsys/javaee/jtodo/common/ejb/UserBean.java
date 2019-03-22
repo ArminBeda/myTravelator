@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.jtodo.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
@@ -37,7 +38,7 @@ public class UserBean {
     public User getCurrentUser() {
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
     }
-
+   
     /**
      *
      * @param username
@@ -89,6 +90,9 @@ public class UserBean {
         return em.merge(user);
     }
 
+    public List<User> searchUser(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * Fehler: Der Benutzername ist bereits vergeben
      */

@@ -14,55 +14,55 @@
     <jsp:attribute name="title">
         Einstellungen
     </jsp:attribute>
-        
-        <jsp:attribute name="head">
-            <link rel="stylesheet" href="<c:url value="/css/user_styling.css"/>" />
-        </jsp:attribute>
-        
-        
-        <jsp:attribute name="menu">
-             <div class="menuitem">
+
+    <jsp:attribute name="head">
+        <link rel="stylesheet" href="<c:url value="/css/user_styling.css"/>" />
+    </jsp:attribute>
+
+
+    <jsp:attribute name="menu">
+        <div class="menuitem">
             <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
         </div>
-        </jsp:attribute>
-        
-        
-        <jsp:attribute name="content">
-            <div class="container">
+    </jsp:attribute>
+
+
+    <jsp:attribute name="content">
+        <div class="container">
             <form method="get" class="stacked">
                 <div class="column">
                     <%-- CSRF-Token --%>
                     <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                     <%-- Eingabefelder --%>
-                    <label for="signup_username">
+                    <label for="signup_username" >
                         Benutzername:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="username" value="${s}">
+                        <input type="text" name="User" value="" placeholder="Alt: ${User.getUsername()}">
                     </div>
-                    
-                    
+
+
                     <label for="signup_password2">
                         Nachname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_last_name" value="${signup_form.values["signup_last_name"][0]}">
+                        <input type="text" name="signup_last_name" value="" placeholder="Alt: ${User.getLast_name()}">
                     </div>
-                    
+
                     <label for="signup_password2">
                         Vorname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_first_name" value="${signup_form.values["signup_first_name"][0]}">
+                        <input type="text" name="signup_first_name" value="" placeholder="Alt: ${User.getFirst_name()}">
                     </div>
-                    
+
 
                     <%-- Button zum Abschicken --%>
-                    <div id="Sign_up_Register_Button" class="side-by-side">
+                    <div id="Change_settings_button" class="side-by-side">
                         <button class="icon-pencil" type="submit">
                             Ändern
                         </button>
@@ -79,5 +79,5 @@
                 </c:if>
             </form>
         </div>
-        </jsp:attribute>
+    </jsp:attribute>
 </template:base>    
