@@ -23,7 +23,7 @@ import javax.validation.constraints.NotNull;
  * @author jka
  */
 @Entity
-public class trip implements Serializable {
+public class Trip implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,7 +52,7 @@ public class trip implements Serializable {
     
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
 
-    public trip(Long id, String reiseziel, String ort, String status, Date von_date, Date bis_date) {
+    public Trip(Long id, String reiseziel, String ort, String status, Date von_date, Date bis_date) {
         this.id = id;
         this.reiseziel = reiseziel;
         this.ort = ort;
