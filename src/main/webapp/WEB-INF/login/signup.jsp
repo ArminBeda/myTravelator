@@ -89,7 +89,7 @@
                         </button>
                     </div>
                 </div>
-
+                
                 <%-- Fehlermeldungen --%>
                 <c:if test="${!empty signup_form.errors}">
                     <ul class="errors">

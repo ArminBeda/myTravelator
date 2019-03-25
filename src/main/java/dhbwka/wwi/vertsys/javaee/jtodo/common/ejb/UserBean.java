@@ -69,6 +69,17 @@ public class UserBean {
         }
 
         user.setPassword(newPassword);
+        em.merge(user);
+        
+    }
+    
+    public void updateCredentials(User user, String first_name, String last_name) throws UserAlreadyExistsException {
+        //List <User> users = em.createQuery("SELECT u.username FROM User u WHERE u.username = :username").setParameter("username", username).getResultList();
+        //if (users != null && users.size()>0) {
+            user.setFirst_name(first_name);
+            user.setLast_name(last_name);
+            em.merge(user);
+        
     }
     
     /**

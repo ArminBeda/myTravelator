@@ -81,12 +81,6 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password.password = password;
-        this.passwordHash = this.hashPassword(password);
-    }
-
     public User(String username, String password, String first_name, String last_name) {
         this.username = username;
         this.password.password = password;
@@ -100,6 +94,7 @@ public class User implements Serializable {
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
+        
     public String getUsername() {
         return username;
     }
