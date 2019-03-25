@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
  * @author yusefoenkol
  */
 @Stateless
-@Path("task")
+@Path("api/task")
 public class TaskFacadeREST extends AbstractFacade<Task> {
 
     @PersistenceContext(unitName = "default")
