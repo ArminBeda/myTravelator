@@ -24,6 +24,31 @@
             <version>${javaee.version}</version>
             <scope>provided</scope>
         </dependency>
+        <!--
+            Google GSON
+            ===========
+
+            Damit lässt sich ein Javaobjekt nach JSON umwandeln und umgekehrt.
+            https://mvnrepository.com/artifact/com.google.code.gson/gson
+        -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+
+        <!--
+            Unirest for Java
+            ================
+
+            Damit lassen sich ganz leicht HTTP-Anfragen absetzen.
+            http://unirest.io/java.html
+        -->
+        <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>1.4.9</version>
+        </dependency>
     </dependencies>
 
     <build>

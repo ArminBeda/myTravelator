@@ -36,6 +36,11 @@
             <url-pattern>/app/*</url-pattern>
         </web-resource-collection>
         
+        <web-resource-collection>
+            <web-resource-name>rest-api</web-resource-name>
+            <url-pattern>/webresources/*</url-pattern>            
+        </web-resource-collection>
+        
         <!--
             Ein Benutzer muss die Rolle "app-user" besitzen, um die
             Seiten aufrufen zu können.
@@ -52,7 +57,7 @@
         <user-data-constraint>
             <transport-guarantee>CONFIDENTIAL</transport-guarantee>
         </user-data-constraint>
-    </security-constraint>
+    </security-constraint> 
 
     <!--
         Übersicht über alle von dieser Webanwendung genutzten Benutzerollen
@@ -76,7 +81,6 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>todo-app</realm-name>
-        
         <form-login-config>
             <form-login-page>/WEB-INF/login/login.jsp</form-login-page>
             <form-error-page>/WEB-INF/login/error.jsp</form-error-page>
