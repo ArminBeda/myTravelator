@@ -83,7 +83,8 @@
                             <th>Land</th>
                             <th>Eigentümer</th>
                             <th>Status</th>
-                            <th>Fällig am</th>
+                            <th>Von</th>
+                            <th>Bis</th>
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">
@@ -103,8 +104,10 @@
                                 <c:out value="${task.status.label}"/>
                             </td>
                             <td>
-                                <c:out value="${utils.formatDate(task.dueDate)}"/>
-                                <c:out value="${utils.formatTime(task.dueTime)}"/>
+                                <c:out value="${utils.formatDate(task.vonDate)}"/>
+                            </td>
+                            <td>
+                                <c:out value="${utils.formatDate(task.bisDate)}"/>
                             </td>
                         </tr>
                     </c:forEach>

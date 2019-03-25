@@ -50,7 +50,7 @@ public class User implements Serializable {
     @NotNull(message = "Bitte tragen Sie einen Nachnamen ein.")
     private String last_name;
     
-       @Column(name="first_name", length = 64)
+    @Column(name="first_name", length = 64)
     @NotNull(message = "Bitte tragen Sie einen Vornamen ein.")
     private String first_name;
     

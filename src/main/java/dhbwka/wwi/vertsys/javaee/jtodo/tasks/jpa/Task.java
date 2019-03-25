@@ -58,10 +58,10 @@ public class Task implements Serializable {
     private String longText;
 
     @NotNull(message = "Das Datum darf nicht leer sein.")
-    private Date dueDate;
+    private Date vonDate;
 
-    @NotNull(message = "Die Uhrzeit darf nicht leer sein.")
-    private Time dueTime;
+    @NotNull(message = "Das Datum darf nicht leer sein.")
+    private Date bisDate;
 
     @Enumerated(EnumType.STRING)
     @NotNull
@@ -71,13 +71,13 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime) {
+    public Task(User owner, Category category, String shortText, String longText, Date vonDate, Date bisDate) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
         this.longText = longText;
-        this.dueDate = dueDate;
-        this.dueTime = dueTime;
+        this.vonDate = vonDate;
+        this.bisDate = bisDate;
     }
     //</editor-fold>
 
@@ -122,21 +122,23 @@ public class Task implements Serializable {
         this.longText = longText;
     }
 
-    public Date getDueDate() {
-        return dueDate;
+    public Date getvonDate() {
+        return vonDate;
     }
 
-    public void setDueDate(Date dueDate) {
-        this.dueDate = dueDate;
+    public void setvonDate(Date vonDate) {
+        this.vonDate = vonDate;
     }
 
-    public Time getDueTime() {
-        return dueTime;
+    public Date getbisDate() {
+        return bisDate;
     }
 
-    public void setDueTime(Time dueTime) {
-        this.dueTime = dueTime;
+    public void setbisDate(Date bisDate) {
+        this.bisDate = bisDate;
     }
+
+
 
     public TaskStatus getStatus() {
         return status;

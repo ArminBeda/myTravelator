@@ -38,7 +38,7 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @return Alle Aufgaben des Benutzers
      */
     public List<Task> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
+        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.vonDate, t.bisDate")
                  .setParameter("username", username)
                  .getResultList();
     }
@@ -63,8 +63,8 @@ public class TaskBean extends EntityBean<Task, Long> {
         Root<Task> from = query.from(Task.class);
         query.select(from);
 
-        // ORDER BY dueDate, dueTime
-        query.orderBy(cb.asc(from.get("dueDate")), cb.asc(from.get("dueTime")));
+        // ORDER BY vonDate, bisDate
+        query.orderBy(cb.asc(from.get("vonDate")), cb.asc(from.get("bisDate")));
         
         // WHERE t.shortText LIKE :search
         Predicate p = cb.conjunction();
