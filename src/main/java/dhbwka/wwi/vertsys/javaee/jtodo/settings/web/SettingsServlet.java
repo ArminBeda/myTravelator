@@ -66,7 +66,6 @@ public class SettingsServlet extends HttpServlet {
         User user = this.userBean.getCurrentUser();
 
         // Formulareingaben auslesen        
-        
         String password_old = request.getParameter("password_old");
         String password_new = request.getParameter("password_new");
         //setAttribute("User", this.userBean.getCurrentUser());
@@ -79,19 +78,34 @@ public class SettingsServlet extends HttpServlet {
         //user.setFirst_name(first_name);
         //user.setLast_name(last_name);
         List<String> errors = this.validationBean.validate(user);
-        
 
         if (errors.isEmpty()) {
-            try {
+            if (first_name.isEmpty()) {
+            } else {
+                this.userBean.updateFirstName(user, first_name);
+            }
+
+            if (last_name.isEmpty()) {
+            } else {
+                this.userBean.updateLastName(user, last_name);
+            }
+            /* try {
                 this.userBean.updateCredentials(user, first_name, last_name);
             } catch (UserBean.UserAlreadyExistsException ex) {
                 errors.add(ex.getMessage());
+            }*/
+            if (password_new.isEmpty()) {
+            } else if (password_old.isEmpty()) {
+                errors.add("Das Passwort konnte nicht geändert werden, bitte tragen Sie das Alte, sowie das Neue Passwort ein.");
+            } else {
+
+                try {
+                    this.userBean.changePassword(user, password_old, password_new);
+                } catch (UserBean.InvalidCredentialsException ex) {
+                    errors.add(ex.getMessage());
+                }
             }
-            try {
-                this.userBean.changePassword(user,password_old , password_new);
-            } catch (UserBean.InvalidCredentialsException ex) {
-                errors.add(ex.getMessage());
-            }
+
         }
 
         // Weiter zur nächsten Seite

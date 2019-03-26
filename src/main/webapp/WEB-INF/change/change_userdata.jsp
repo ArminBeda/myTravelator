@@ -68,7 +68,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="password" name="password_old" value="" placeholder="Gebe hier dein altes Passwort ein">
+                        <input type="password" name="password_old" value="" placeholder="Altes Passwort">
                     </div>
                     
                     <label for="password_new">
@@ -76,7 +76,7 @@
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="password" name="password_new" value="" placeholder="Gebe hier dein neues Passwort ein">
+                        <input type="password" name="password_new" value="" placeholder="Neues Passwort">
                     </div>
 
                     <%-- Button zum Abschicken --%>

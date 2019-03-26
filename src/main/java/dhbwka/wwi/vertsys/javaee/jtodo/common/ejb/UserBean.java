@@ -11,6 +11,7 @@ package dhbwka.wwi.vertsys.javaee.jtodo.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
@@ -79,6 +80,17 @@ public class UserBean {
             user.setFirst_name(first_name);
             user.setLast_name(last_name);
             em.merge(user);
+        
+    }
+    
+    public void updateFirstName(User user, String vorname){
+        user.setFirst_name(vorname);
+        em.merge(user);
+    }
+    
+    public void updateLastName(User user, String nachname){
+        user.setLast_name(nachname);
+        em.merge(user);
         
     }
     

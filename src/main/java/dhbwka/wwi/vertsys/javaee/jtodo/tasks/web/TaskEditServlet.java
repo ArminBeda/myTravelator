@@ -140,7 +140,7 @@ public class TaskEditServlet extends HttpServlet {
         }
 
         if (bisDate != null) {
-            task.setvonDate(vonDate);
+            task.setbisDate(bisDate);
         } else {
             errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
