@@ -85,6 +85,7 @@
                             <th>Status</th>
                             <th>Von</th>
                             <th>Bis</th>
+                            <th>Reiseart</th>
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">
@@ -108,6 +109,9 @@
                             </td>
                             <td>
                                 <c:out value="${utils.formatDate(task.bisDate)}"/>
+                            </td>
+                            <td>
+                                <c:out value="${task.reiseart}"/>
                             </td>
                         </tr>
                     </c:forEach>

@@ -35,47 +35,47 @@
         </div>
         <div class="menuitem menu-right ">
             <a href="<c:url value="/app/settings/"/>">Nutzerdaten ändern</a>
-    </jsp:attribute>
+        </jsp:attribute>
 
-    <jsp:attribute name="content">
-        <c:choose>
-            <c:when test="${empty sections}">
-                <p>
-                    Es wurden keine Dashboard-Kacheln gefunden. 🙈
-                </p>
-            </c:when>
-            <c:otherwise>
-                <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
+        <jsp:attribute name="content">
+            <c:choose>
+                <c:when test="${empty sections}">
+                    <p>
+                        Es wurden keine Dashboard-Kacheln gefunden. 🙈
+                    </p>
+                </c:when>
+                <c:otherwise>
+                    <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
 
-                <c:forEach items="${sections}" var="section">
-                    <h2>
-                        <c:out value="${section.label}"/>
-                    </h2>
+                    <c:forEach items="${sections}" var="section">
+                        <h2>
+                            <c:out value="${section.label}"/>
+                        </h2>
 
-                    <c:forEach items="${section.tiles}" var="tile">
-                        <div class="tile ${tile.cssClass}">
-                            <a href="<c:url value="${tile.href}"/>">
-                                <div class="content">
-                                    <div class="label">
-                                        <c:out value="${tile.label}"/>
+                        <c:forEach items="${section.tiles}" var="tile">
+                            <div class="tile ${tile.cssClass}">
+                                <a href="<c:url value="${tile.href}"/>">
+                                    <div class="content">
+                                        <div class="label">
+                                            <c:out value="${tile.label}"/>
+                                        </div>
+                                        <div class="icon icon-${tile.icon}"></div>
+                                        <div class="amount">
+                                            <c:choose>
+                                                <c:when test="${tile.showDecimals}">
+                                                    <c:out value="${utils.formatDouble(tile.amount)}"/>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <c:out value="${utils.formatInteger(tile.amount)}"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
                                     </div>
-                                    <div class="icon icon-${tile.icon}"></div>
-                                    <div class="amount">
-                                        <c:choose>
-                                            <c:when test="${tile.showDecimals}">
-                                                <c:out value="${utils.formatDouble(tile.amount)}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value="${utils.formatInteger(tile.amount)}"/>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        </c:forEach>
                     </c:forEach>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>
-    </jsp:attribute>
-</template:base>
+                </c:otherwise>
+            </c:choose>
+        </jsp:attribute>
+    </template:base>

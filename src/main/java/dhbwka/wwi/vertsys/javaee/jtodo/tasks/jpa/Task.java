@@ -63,6 +63,9 @@ public class Task implements Serializable {
     @NotNull(message = "Das Datum darf nicht leer sein.")
     private Date bisDate;
 
+    @NotNull(message = "Bitte tragen Sie die Reiseart ein.")
+    private String reiseart;
+
     @Enumerated(EnumType.STRING)
     @NotNull
     private TaskStatus status = TaskStatus.OPEN;
@@ -71,13 +74,14 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date vonDate, Date bisDate) {
+    public Task(User owner, Category category, String shortText, String longText, Date vonDate, Date bisDate, String reiseart) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
         this.longText = longText;
         this.vonDate = vonDate;
         this.bisDate = bisDate;
+        this.reiseart= reiseart;
     }
     //</editor-fold>
 
@@ -138,8 +142,6 @@ public class Task implements Serializable {
         this.bisDate = bisDate;
     }
 
-
-
     public TaskStatus getStatus() {
         return status;
     }
@@ -147,6 +149,15 @@ public class Task implements Serializable {
     public void setStatus(TaskStatus status) {
         this.status = status;
     }
-    //</editor-fold>
+
+    public String getReiseart() {
+        return reiseart;
+    }
+
+    public void setReiseart(String reiseart) {
+        this.reiseart = reiseart;
+    }
 
 }
+//</editor-fold>
+

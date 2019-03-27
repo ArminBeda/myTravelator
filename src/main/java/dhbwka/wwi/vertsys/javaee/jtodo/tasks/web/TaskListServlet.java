@@ -9,6 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.jtodo.tasks.web;
 
+import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.ejb.CategoryBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Category;
@@ -22,6 +23,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet für die tabellarische Auflisten der Aufgaben.
@@ -71,6 +73,7 @@ public class TaskListServlet extends HttpServlet {
 
         List<Task> tasks = this.taskBean.search(searchText, category, status);
         request.setAttribute("tasks", tasks);
+        
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/tasks/task_list.jsp").forward(request, response);

@@ -117,6 +117,7 @@ public class TaskEditServlet extends HttpServlet {
         String taskvonDate = request.getParameter("task_von_date");
         String taskbisDate = request.getParameter("task_bis_date");
         String taskStatus = request.getParameter("task_status");
+        String task_reiseart = request.getParameter("task_reiseart");
         String taskShortText = request.getParameter("task_short_text");
         String taskLongText = request.getParameter("task_long_text");
 
@@ -153,6 +154,8 @@ public class TaskEditServlet extends HttpServlet {
 
         task.setShortText(taskShortText);
         task.setLongText(taskLongText);
+        
+        task.setReiseart(task_reiseart);
 
         this.validationBean.validate(task, errors);
 
