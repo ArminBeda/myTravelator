@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Reiseziele bearbeiten
+        Länder bearbeiten
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
         </div>
     </jsp:attribute>
 

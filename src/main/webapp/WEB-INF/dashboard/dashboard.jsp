@@ -31,7 +31,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Neues Land anlegen</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Länder bearbeiten</a>
         </div>
         <div class="menuitem menu-right ">
             <a href="<c:url value="/app/settings/"/>">Nutzerdaten ändern</a>
