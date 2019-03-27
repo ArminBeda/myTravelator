@@ -32,7 +32,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Neues Land anlegen</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Länder bearbeiten</a>
         </div>
     </jsp:attribute>
 

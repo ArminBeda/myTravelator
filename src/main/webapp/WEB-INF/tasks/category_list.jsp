@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Land bearbeiten</a>
+            <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
         </div>
     </jsp:attribute>
 
