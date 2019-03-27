@@ -27,14 +27,14 @@
             <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
         </div>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Reise anlegen</a>
+            <a href="<c:url value="/app/tasks/task/new/"/>">Neuer Trip</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Reiseziele bearbeiten</a>
+            <a href="<c:url value="/app/tasks/categories/"/>">Neues Land anlegen</a>
         </div>
         <div class="menuitem menu-right ">
-            <a href="<c:url value="/app/settings/"/>">Einstellungen</a>
+            <a href="<c:url value="/app/settings/"/>">Nutzerdaten ändern</a>
     </jsp:attribute>
 
     <jsp:attribute name="content">

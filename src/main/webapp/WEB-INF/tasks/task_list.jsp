@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Reise anlegen</a>
+            <a href="<c:url value="/app/tasks/task/new/"/>">Neuer Trip</a>
         </div>
 
         <div class="menuitem">
