@@ -102,3 +102,7 @@ a:hover {
     background-color: grey;
     cursor: pointer;
 }
+
+#new {
+    font-style: italic;
+}

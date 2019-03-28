@@ -28,7 +28,6 @@
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
@@ -62,14 +61,14 @@
 
                 <label for="task_category">Land:</label>
                 <div class="side-by-side">
-                    <select name="task_category">
+                    <select onchange="newLand(this)" name="task_category">
                         <option value="">Bitte ein Land auswählen</option>
-
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
                                 <c:out value="${category.name}" />
                             </option>
                         </c:forEach>
+                        <option id="new" value="<c:url value="/app/tasks/categories/"/>">+ Neues Land hinzufügen</option>
                     </select>
                 </div>
 
@@ -140,6 +139,13 @@
                     </c:forEach>
                 </ul>
             </c:if>
-        </form>
+        </form>                 
+        <script>
+        function newLand(option){
+            if(option[option.selectedIndex].id==="new"){
+                window.location = option[option.selectedIndex].value;
+            }
+        }
+        </script>
     </jsp:attribute>
 </template:base>
