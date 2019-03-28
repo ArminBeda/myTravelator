@@ -27,6 +27,15 @@
 
     <jsp:attribute name="head">
         <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+          $( ".datepicker" ).datepicker({dateFormat: "dd.mm.yy" , dayNames: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"], dayNamesMin: [ "So", "Mo", "Di", "Mi", "Do", "Fr", "Sa" ], monthNames: [ "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ]});
+        } );
+        </script>
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -70,8 +79,8 @@
                 </label>
                 <div class="side-by-side">
                     <!--<input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">-->
-                    <input type="text" name="task_von_date" placeholder="Von:">
-                    <input type="text" name="task_bis_date" placeholder="Bis:">
+                    <input class="datepicker" type="text" name="task_von_date" placeholder="Von:">
+                    <input class="datepicker" type="text" name="task_bis_date" placeholder="Bis:">
                     <!--<input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">-->
                 </div>
 
