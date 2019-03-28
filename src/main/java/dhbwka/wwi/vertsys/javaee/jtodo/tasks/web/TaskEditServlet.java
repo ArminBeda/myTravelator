@@ -146,6 +146,10 @@ public class TaskEditServlet extends HttpServlet {
             errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
+        if (vonDate.compareTo(bisDate)>0){
+            errors.add("Von Datum muss vor Bis Datum sein.");
+        }
+
         try {
             task.setStatus(TaskStatus.valueOf(taskStatus));
         } catch (IllegalArgumentException ex) {
