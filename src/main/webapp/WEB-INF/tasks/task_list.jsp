@@ -89,11 +89,9 @@
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">
-                        <tr>
+                        <tr class="clickable-row" data-href="<c:url value="/app/tasks/task/${task.id}/"/>">
                             <td>
-                                <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.shortText}"/>
-                                </a>
+                                <c:out value="${task.shortText}"/>
                             </td>
                             <td>
                                 <c:out value="${task.category.name}"/>
@@ -118,5 +116,13 @@
                 </table>
             </c:otherwise>
         </c:choose>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+});
+</script>
     </jsp:attribute>
 </template:base>
