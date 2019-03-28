@@ -78,10 +78,10 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="task_due_date" value="${task_form.values["task_von_date"][0]}">
-                    <!--<input class="datepicker" type="text" name="task_von_date" placeholder="Von:">-->
-                    <!--<input class="datepicker" type="text" name="task_bis_date" placeholder="Bis:">-->
-                    <input type="text" name="task_due_time" value="${task_form.values["task_bis_date"][0]}">
+                   <!-- <input type="text" name="task_von_date" value="${task_form.values["task_von_date"][0]}">-->
+                    <input class="datepicker" type="text" name="task_von_date" placeholder="Von:" value="${task_form.values["task_von_date"][0]}">
+                    <input class="datepicker" type="text" name="task_bis_date" placeholder="Bis:" value="${task_form.values["task_bis_date"][0]}">
+                    <!--<input type="text" name="task_bis_time" value="${task_form.values["task_bis_date"][0]}">-->
                 </div>
 
                 <label for="task_status">
