@@ -107,7 +107,7 @@
                 
                 <label for="task_owner">Reiseart</label>
                 <div class="side-by-side">
-                    <input type="text" name="task_reiseart" value="">
+                    <input type="text" name="task_reiseart" value="${reiseart}">
                 </div>
 
                 <label for="task_long_text">

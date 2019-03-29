@@ -71,6 +71,8 @@ public class TaskEditServlet extends HttpServlet {
             request.setAttribute("task_form", this.createTaskForm(task));
         }
         
+        request.setAttribute("reiseart", task.getReiseart());
+        
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/tasks/task_edit.jsp").forward(request, response);
