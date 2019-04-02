@@ -42,15 +42,15 @@ public class Task implements Serializable {
     private long id;
 
     @ManyToOne
-    @NotNull(message = "Die Aufgabe muss einem Benutzer geordnet werden.")
+    @NotNull(message = "Der Tip muss einem Benutzer geordnet werden.")
     private User owner;
 
     @ManyToOne
     private Category category;
 
     @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
+    @NotNull(message = "Der Ort darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Der Ort muss zwischen ein und 50 Zeichen lang sein.")
     private String shortText;
 
     @Lob

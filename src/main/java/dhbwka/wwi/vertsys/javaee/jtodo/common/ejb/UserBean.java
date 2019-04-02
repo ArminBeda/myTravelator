@@ -84,7 +84,7 @@ public class UserBean {
     @RolesAllowed("app-user")
     public void changePassword(User user, String oldPassword, String newPassword) throws InvalidCredentialsException {
         if (user == null || !user.checkPassword(oldPassword)) {
-            throw new InvalidCredentialsException("Benutzername oder Passwort sind falsch.");
+            throw new InvalidCredentialsException("Das Alte Passwort ist falsch.");
         }
 
         user.setPassword(newPassword);
