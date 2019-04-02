@@ -42,7 +42,7 @@ public class Task implements Serializable {
     private long id;
 
     @ManyToOne
-    @NotNull(message = "Der Tip muss einem Benutzer geordnet werden.")
+    @NotNull(message = "Der Trip muss einem Benutzer geordnet werden.")
     private User owner;
 
     @ManyToOne

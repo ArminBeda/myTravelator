@@ -1,4 +1,4 @@
-/*
+Tip/*
  * Copyright © 2018 Dennis Schulmeister-Zimolong
  * 
  * E-Mail: dhbw@windows3.de
