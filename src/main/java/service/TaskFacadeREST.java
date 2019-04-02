@@ -82,7 +82,7 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<TaskDTO> findAllDTO() {
-        return taskFacade.findAll();
+        return taskFacade.findAllTask();
     }
 
     @GET

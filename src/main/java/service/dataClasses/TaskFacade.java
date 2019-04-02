@@ -26,7 +26,7 @@ public class TaskFacade {
     @EJB
     TaskBean taskBean;
     
-    public List<TaskDTO> findAll(){
+    public List<TaskDTO> findAllTask(){
         List<Task> tasks= taskBean.findAll();
         return tasks.stream().map((task) -> {
             TaskDTO taskDTO = new TaskDTO(task);
