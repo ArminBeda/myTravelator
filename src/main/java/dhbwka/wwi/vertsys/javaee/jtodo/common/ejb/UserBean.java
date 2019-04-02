@@ -85,7 +85,6 @@ public class UserBean {
     public void changePassword(User user, String oldPassword, String newPassword) throws InvalidCredentialsException {
         if (user == null || !user.checkPassword(oldPassword)) {
             throw new InvalidCredentialsException("Das Alte Passwort stimmt nicht überein.");
-        }
 
         user.setPassword(newPassword);
         em.merge(user);
