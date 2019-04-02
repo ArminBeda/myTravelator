@@ -39,6 +39,24 @@ public class UserBean {
     public User getCurrentUser() {
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
     }
+    
+    /**
+     * Gibt alle Datenbankobjekt User zurück,
+     *
+     * @return Liste der registrierten User
+     */
+    public List<User> findAll(){
+        return this.em.createQuery("SELECT u FROM User u").getResultList();
+    }
+    
+    /**
+     * Findet einen User nach seiner ID,
+     *
+     * @return User der gesuchten ID
+     */
+    public User findUser(String id){
+        return em.find(User.class, id);
+    }
    
     /**
      *
@@ -77,6 +95,12 @@ public class UserBean {
     public void updateCredentials(User user, String first_name, String last_name) throws UserAlreadyExistsException {
         //List <User> users = em.createQuery("SELECT u.username FROM User u WHERE u.username = :username").setParameter("username", username).getResultList();
         //if (users != null && users.size()>0) {
+            if(first_name==null && first_name.isEmpty()){
+                throw new UserAlreadyExistsException("Der Vorname darf nicht leer sein.");
+            }
+            if(last_name==null && last_name.isEmpty()){
+                throw new UserAlreadyExistsException("Der Nachname darf nicht leer sein.");
+            }
             user.setFirst_name(first_name);
             user.setLast_name(last_name);
             em.merge(user);
