@@ -13,7 +13,7 @@ import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Category;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Task;
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.TaskStatus;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -22,7 +22,6 @@ import java.sql.Date;
 public class TaskDTO {
 //    private User owner;
     private UserDTO owner;
-    
     private Category category;
     private String shortText;
     private String longText;

@@ -11,6 +11,7 @@ package service;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Task;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,6 +24,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import service.dataClasses.TaskDTO;
+import service.dataClasses.TaskFacade;
 
 /**
  *
@@ -34,6 +37,9 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
 
     @PersistenceContext(unitName = "default")
     private EntityManager em;
+    
+    @EJB
+    TaskFacade taskFacade;
 
     public TaskFacadeREST() {
         super(Task.class);
@@ -66,11 +72,17 @@ public class TaskFacadeREST extends AbstractFacade<Task> {
         return super.find(id);
     }
 
-    @GET
+   /* @GET
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public List<Task> findAll() {
         return super.findAll();
+    }*/
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TaskDTO> findAllDTO() {
+        return taskFacade.findAll();
     }
 
     @GET
