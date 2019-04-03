@@ -9,7 +9,7 @@
  */
 package service;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -24,14 +24,14 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Reiseliste</a>
+            <a href="<c:url value="/app/trips/list/"/>">Reiseliste</a>
         </div>
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Neuer Trip</a>
+            <a href="<c:url value="/app/trips/trip/new/"/>">Neuer Trip</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Länder bearbeiten</a>
+            <a href="<c:url value="/app/trips/categories/"/>">Länder bearbeiten</a>
         </div>
         <div class="menuitem menu-right ">
             <a href="<c:url value="/app/settings/"/>">Nutzerdaten ändern</a>
@@ -45,7 +45,7 @@
                     </p>
                 </c:when>
                 <c:otherwise>
-                    <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
+                    <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.myTravelator.common.web.WebUtils"/>
 
                     <c:forEach items="${sections}" var="section">
                         <h2>

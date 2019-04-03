@@ -9,7 +9,7 @@
  */
 package service.dataClasses;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.myTravelator.common.jpa.User;
 
 /**
  *
