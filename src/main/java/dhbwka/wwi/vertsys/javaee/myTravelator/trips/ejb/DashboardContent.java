@@ -13,7 +13,7 @@ import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.myTravelator.dashboard.ejb.DashboardContentProvider;
 import dhbwka.wwi.vertsys.javaee.myTravelator.dashboard.ejb.DashboardSection;
 import dhbwka.wwi.vertsys.javaee.myTravelator.dashboard.ejb.DashboardTile;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.TripStatus;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,7 +26,7 @@ import javax.ejb.Stateless;
 public class DashboardContent implements DashboardContentProvider {
 
     @EJB
-    private CategoryBean categoryBean;
+    private CountryBean countryBean;
 
     @EJB
     private TripBean tripBean;
@@ -46,10 +46,10 @@ public class DashboardContent implements DashboardContentProvider {
         sections.add(section);
 
         // Anschließend je Kategorie einen weiteren Abschnitt erzeugen
-        List<Category> categories = this.categoryBean.findAllSorted();
+        List<Country> categories = this.countryBean.findAllSorted();
 
-        for (Category category : categories) {
-            section = this.createSection(category);
+        for (Country country : categories) {
+            section = this.createSection(country);
             sections.add(section);
         }
     }
@@ -63,23 +63,23 @@ public class DashboardContent implements DashboardContentProvider {
      * Ist die Kategorie null, bedeutet dass, dass eine Rubrik für alle Aufgaben
      * aus allen Kategorien erzeugt werden soll.
      *
-     * @param category Aufgaben-Kategorie, für die Kacheln erzeugt werden sollen
+     * @param country Aufgaben-Kategorie, für die Kacheln erzeugt werden sollen
      * @return Neue Dashboard-Rubrik mit den Kacheln
      */
-    private DashboardSection createSection(Category category) {
+    private DashboardSection createSection(Country country) {
         // Neue Rubrik im Dashboard erzeugen
         DashboardSection section = new DashboardSection();
         String cssClass = "";
 
-        if (category != null) {
-            section.setLabel(category.getName());
+        if (country != null) {
+            section.setLabel(country.getName());
         } else {
             section.setLabel("Alle Reiseziele");
             cssClass = "overview";
         }
 
         // Eine Kachel für alle Aufgaben in dieser Rubrik erzeugen
-        DashboardTile tile = this.createTile(category, null, "Alle", cssClass + " status-all", "calendar");
+        DashboardTile tile = this.createTile(country, null, "Alle", cssClass + " status-all", "calendar");
         section.getTiles().add(tile);
 
         // Ja Aufgabenstatus eine weitere Kachel erzeugen
@@ -105,7 +105,7 @@ public class DashboardContent implements DashboardContentProvider {
                     break;
             }
 
-            tile = this.createTile(category, status, status.getLabel(), cssClass1, icon);
+            tile = this.createTile(country, status, status.getLabel(), cssClass1, icon);
             section.getTiles().add(tile);
         }
 
@@ -118,19 +118,19 @@ public class DashboardContent implements DashboardContentProvider {
      * Methode werden auch die in der Kachel angezeigte Anzahl sowie der Link,
      * auf den die Kachel zeigt, ermittelt.
      *
-     * @param category
+     * @param country
      * @param status
      * @param label
      * @param cssClass
      * @param icon
      * @return
      */
-    private DashboardTile createTile(Category category, TripStatus status, String label, String cssClass, String icon) {
-        int amount = tripBean.search(null, category, status).size();
+    private DashboardTile createTile(Country country, TripStatus status, String label, String cssClass, String icon) {
+        int amount = tripBean.search(null, country, status).size();
         String href = "/app/trips/list/";
 
-        if (category != null) {
-            href = WebUtils.addQueryParameter(href, "search_category", "" + category.getId());
+        if (country != null) {
+            href = WebUtils.addQueryParameter(href, "search_country", "" + country.getId());
         }
 
         if (status != null) {

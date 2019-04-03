@@ -11,7 +11,7 @@ package dhbwka.wwi.vertsys.javaee.myTravelator.trips.web;
 
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CountryBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.TripBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.ValidationBean;
@@ -43,7 +43,7 @@ public class TripEditServlet extends HttpServlet {
     TripBean tripBean;
 
     @EJB
-    CategoryBean categoryBean;
+    CountryBean countryBean;
 
     @EJB
     UserBean userBean;
@@ -56,7 +56,7 @@ public class TripEditServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("categories", this.countryBean.findAllSorted());
         request.setAttribute("statuses", TripStatus.values());
 
         // Zu bearbeitende Aufgabe einlesen
@@ -115,7 +115,7 @@ public class TripEditServlet extends HttpServlet {
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
 
-        String tripCategory = request.getParameter("trip_category");
+        String tripCountry = request.getParameter("trip_country");
         String tripvonDate = request.getParameter("trip_von_date");
         String tripbisDate = request.getParameter("trip_bis_date");
         String tripStatus = request.getParameter("trip_status");
@@ -125,9 +125,9 @@ public class TripEditServlet extends HttpServlet {
 
         Trip trip = this.getRequestedTrip(request);
 
-        if (tripCategory != null && !tripCategory.trim().isEmpty()) {
+        if (tripCountry != null && !tripCountry.trim().isEmpty()) {
             try {
-                trip.setCategory(this.categoryBean.findById(Long.parseLong(tripCategory)));
+                trip.setCountry(this.countryBean.findById(Long.parseLong(tripCountry)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
@@ -261,9 +261,9 @@ public class TripEditServlet extends HttpServlet {
             trip.getOwner().getUsername()
         });
 
-        if (trip.getCategory() != null) {
-            values.put("trip_category", new String[]{
-                "" + trip.getCategory().getId()
+        if (trip.getCountry() != null) {
+            values.put("trip_country", new String[]{
+                "" + trip.getCountry().getId()
             });
         }
 

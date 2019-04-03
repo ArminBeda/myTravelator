@@ -30,13 +30,13 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @XmlRootElement
-public class Category implements Serializable {
+public class Country implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "category_ids")
-    @TableGenerator(name = "category_ids", initialValue = 0, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "country_ids")
+    @TableGenerator(name = "country_ids", initialValue = 0, allocationSize = 50)
     private long id;
 
     @Column(length = 30)
@@ -44,14 +44,14 @@ public class Category implements Serializable {
     @Size(min = 3, max = 30, message = "Der Name muss zwischen drei und 30 Zeichen lang sein.")
     private String name;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
     List<Trip> trips = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Category() {
+    public Country() {
     }
 
-    public Category(String name) {
+    public Country(String name) {
         this.name = name;
     }
     //</editor-fold>

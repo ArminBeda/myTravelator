@@ -1220,7 +1220,7 @@ TestSupport.prototype = {
         return itemString;
     },
 
-    toggleCategory : function (img){
+    toggleCountry : function (img){
         var ImageNode = document.getElementById('I' + img);
         var ImageNode1 = document.getElementById('I1' + img);
         if(ImageNode1.src.indexOf('cg.gif')>-1) {
@@ -1393,7 +1393,7 @@ WADLParser.prototype = {
         var myTree = this.createTree(wadlDoc);
         var treeString = myTree.toString();
         ts.updatepage('leftSidebar', treeString);
-        this.showTopCategory();
+        this.showTopCountry();
     },
     
     refreshTree : function (wadlDoc) {
@@ -1409,7 +1409,7 @@ WADLParser.prototype = {
         if(app != null) {
             rs = ts.getElementsByTagName(app, 'resources')[0];
             ts.projectName = this.projectNameFromUrl(rs.attributes.getNamedItem('base').nodeValue);
-            var resources = new category(rs, this.getTopCategoryId(), baseURL, ts.projectName);
+            var resources = new country(rs, this.getTopCountryId(), baseURL, ts.projectName);
             myTree.add(resources);
             this.createChildNodes(rs, resources);
         }
@@ -1474,7 +1474,7 @@ WADLParser.prototype = {
              uri = uri.substring(0, uri.length-2)
          var cName = (pathVal == '/' ? '/' : ts.wdr.trimSeperator(pathVal));
          if(ts.wdr.hasResource(n)) {
-            return new category(n, ts.wdr.getUniqueCategoryId(pathVal), uri, cName);
+            return new country(n, ts.wdr.getUniqueCountryId(pathVal), uri, cName);
          } else {
             var methods = ts.getElementsByTagName(n, 'method');
             if(methods != null && methods.length > 0) {
@@ -1487,7 +1487,7 @@ WADLParser.prototype = {
                     if(ts.wdr.hasResource(n2)) {
                         //Stop recursion when inner resources have reference to static resource.
                         return null;
-//                        var cat = new category(n, ts.wdr.getUniqueCategoryId(pathVal+'_1'), uri, cName);
+//                        var cat = new country(n, ts.wdr.getUniqueCountryId(pathVal+'_1'), uri, cName);
 //                        createChildNodes2(n2, cat);
 //                        return cat;
                     } else {
@@ -1629,45 +1629,45 @@ WADLParser.prototype = {
         }
     },
     
-    showTopCategory : function (){
-        this.showCategory(this.getTopCategoryId());
+    showTopCountry : function (){
+        this.showCountry(this.getTopCountryId());
     },
     
-    showCategory : function (category){
-        var categoryChildNodes = document.getElementById(category).style;
-        if(categoryChildNodes.display=="block")
-            categoryChildNodes.display="none";
+    showCountry : function (country){
+        var countryChildNodes = document.getElementById(country).style;
+        if(countryChildNodes.display=="block")
+            countryChildNodes.display="none";
         else
-            categoryChildNodes.display="block";
-        ts.toggleCategory(category);
+            countryChildNodes.display="block";
+        ts.toggleCountry(country);
     },
     
-    getTopCategoryId : function (){
+    getTopCountryId : function (){
         return 'resources' + '_0';
     },
 
-    getUniqueCategoryId : function (category){
-        return category + '_' + ts.allcat.length;
+    getUniqueCountryId : function (country){
+        return country + '_' + ts.allcat.length;
     },
     
     updateTree : function (catId){
-        if(catId == this.getTopCategoryId()) {//return if top level
-            this.showTopCategory();
+        if(catId == this.getTopCountryId()) {//return if top level
+            this.showTopCountry();
             return;
         }
         var myTree = this.createTree(ts.wadlDoc);
         ts.updatepage('leftSidebar', myTree.toString());
         childrenContent = '';
         this.getChildren(catId);
-        currentCategory = catId;
-        setTimeout("ts.wdr.refreshCategory()",1000);
+        currentCountry = catId;
+        setTimeout("ts.wdr.refreshCountry()",1000);
     },
 
-    refreshCategory : function(){
-        var catId = currentCategory;
+    refreshCountry : function(){
+        var catId = currentCountry;
         ts.updatepage(catId, childrenContent);
-        this.showTopCategory();
-        this.showCategory(catId);
+        this.showTopCountry();
+        this.showCountry(catId);
     },
 
     //get mediatype from method
@@ -1859,8 +1859,8 @@ function tree(){
 }
 
 tree.prototype = {
-    add : function (category){
-        this.categories[this.categories.length] = category;
+    add : function (country){
+        this.categories[this.categories.length] = country;
     },
 
     list : function (){
@@ -1876,7 +1876,7 @@ tree.prototype = {
     }
 }
 
-function category(resource, id, uri, text){
+function country(resource, id, uri, text){
     this.r = resource;
     this.id = id;
     this.text = text;
@@ -1887,26 +1887,26 @@ function category(resource, id, uri, text){
     this.uri = uri;
 }
 
-category.prototype = {
+country.prototype = {
     write : function (){
-        var categoryString = '<span id="nodeSel' + this.id + '" class="category TreeContent_sun4"';
+        var countryString = '<span id="nodeSel' + this.id + '" class="country TreeContent_sun4"';
         if(this.uri != baseURL) {
-            categoryString += '><img src="cg.gif" id="I1' + this.id + '" onClick="ts.wdr.showCategory(\'' + this.id + '\')">';
-            categoryString += '<img src="collapse.gif" id="I' + this.id + '">';
-            categoryString += "<div class='item2'><a class=Hyp_sun4 href=javascript:ts.doShowContentForId('"+this.ndx+"') >"+ this.text + "</a></div>";
+            countryString += '><img src="cg.gif" id="I1' + this.id + '" onClick="ts.wdr.showCountry(\'' + this.id + '\')">';
+            countryString += '<img src="collapse.gif" id="I' + this.id + '">';
+            countryString += "<div class='item2'><a class=Hyp_sun4 href=javascript:ts.doShowContentForId('"+this.ndx+"') >"+ this.text + "</a></div>";
         } else {
-            categoryString += '><img src="cg.gif" id="I1' + this.id + '" onClick="ts.wdr.updateTree(\'' + this.id + '\')">';
-            categoryString += '<img src="app.gif" id="I' + this.id + '">';
-            categoryString += "<div class='item2'><a class=Hyp_sun4 href=javascript:ts.clearAll() >"+ this.text + "</a></div>";
+            countryString += '><img src="cg.gif" id="I1' + this.id + '" onClick="ts.wdr.updateTree(\'' + this.id + '\')">';
+            countryString += '<img src="app.gif" id="I' + this.id + '">';
+            countryString += "<div class='item2'><a class=Hyp_sun4 href=javascript:ts.clearAll() >"+ this.text + "</a></div>";
         }
-        categoryString += '</span>';
-        categoryString += '<span class="item" id="';
-        categoryString += this.id + '">';
+        countryString += '</span>';
+        countryString += '<span class="item" id="';
+        countryString += this.id + '">';
         var numitems = this.items.length;
         for(var j=0;j<numitems;j++)
-            categoryString += this.items[j].write();
-        categoryString += '</span>';
-        return categoryString;
+            countryString += this.items[j].write();
+        countryString += '</span>';
+        return countryString;
     },
 
     add : function (item){
@@ -1929,7 +1929,7 @@ function item(resource, id, uri, text, ndx){
 
 item.prototype = {
     write : function (){
-        var itemString = '<span class="category TreeContent_sun4"><img src="cc.gif" border="0">';
+        var itemString = '<span class="country TreeContent_sun4"><img src="cc.gif" border="0">';
 
         itemString += '<img src="item.gif" border="0">';
         if(this.uri != null)

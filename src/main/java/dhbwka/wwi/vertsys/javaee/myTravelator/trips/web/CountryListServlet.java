@@ -10,10 +10,10 @@
 package dhbwka.wwi.vertsys.javaee.myTravelator.trips.web;
 
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CountryBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.TripBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Trip;
 import java.io.IOException;
 import java.util.List;
@@ -32,10 +32,10 @@ import javax.servlet.http.HttpSession;
  * die zum Löschen der Kategorien verwendet werden kann.
  */
 @WebServlet(urlPatterns = {"/app/trips/categories/"})
-public class CategoryListServlet extends HttpServlet {
+public class CountryListServlet extends HttpServlet {
 
     @EJB
-    CategoryBean categoryBean;
+    CountryBean countryBean;
 
     @EJB
     TripBean tripBean;
@@ -48,10 +48,10 @@ public class CategoryListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Alle vorhandenen Kategorien ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("categories", this.countryBean.findAllSorted());
 
         // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/trips/category_list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/trips/country_list.jsp");
         dispatcher.forward(request, response);
 
         // Alte Formulardaten aus der Session entfernen
@@ -72,7 +72,7 @@ public class CategoryListServlet extends HttpServlet {
 
         switch (action) {
             case "create":
-                this.createCategory(request, response);
+                this.createCountry(request, response);
                 break;
             case "delete":
                 this.deleteCategories(request, response);
@@ -88,18 +88,18 @@ public class CategoryListServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void createCategory(HttpServletRequest request, HttpServletResponse response)
+    private void createCountry(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Formulareingaben prüfen
         String name = request.getParameter("name");
 
-        Category category = new Category(name);
-        List<String> errors = this.validationBean.validate(category);
+        Country country = new Country(name);
+        List<String> errors = this.validationBean.validate(country);
 
         // Neue Kategorie anlegen
         if (errors.isEmpty()) {
-            this.categoryBean.saveNew(category);
+            this.countryBean.saveNew(country);
         }
 
         // Browser auffordern, die Seite neuzuladen
@@ -127,39 +127,39 @@ public class CategoryListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Markierte Kategorie IDs auslesen
-        String[] categoryIds = request.getParameterValues("category");
+        String[] countryIds = request.getParameterValues("country");
 
-        if (categoryIds == null) {
-            categoryIds = new String[0];
+        if (countryIds == null) {
+            countryIds = new String[0];
         }
 
         // Kategorien löschen
-        for (String categoryId : categoryIds) {
+        for (String countryId : countryIds) {
             // Zu löschende Kategorie ermitteln
-            Category category;
+            Country country;
 
             try {
-                category = this.categoryBean.findById(Long.parseLong(categoryId));
+                country = this.countryBean.findById(Long.parseLong(countryId));
             } catch (NumberFormatException ex) {
                 continue;
             }
 
-            if (category == null) {
+            if (country == null) {
                 continue;
             }
 
             // Bei allen betroffenen Aufgaben, den Bezug zur Kategorie aufheben
-            List<Trip> trips = category.getTrips();
+            List<Trip> trips = country.getTrips();
 
             if (trips != null) {
                 trips.forEach((Trip trip) -> {
-                    trip.setCategory(null);
+                    trip.setCountry(null);
                     this.tripBean.update(trip);
                 });
             }
 
             // Und weg damit
-            this.categoryBean.delete(category);
+            this.countryBean.delete(country);
         }
 
         // Browser auffordern, die Seite neuzuladen

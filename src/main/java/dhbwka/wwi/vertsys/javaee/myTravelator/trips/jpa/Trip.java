@@ -46,7 +46,7 @@ public class Trip implements Serializable {
     private User owner;
 
     @ManyToOne
-    private Category category;
+    private Country country;
 
     @Column(length = 50)
     @NotNull(message = "Der Ort darf nicht leer sein.")
@@ -74,9 +74,9 @@ public class Trip implements Serializable {
     public Trip() {
     }
 
-    public Trip(User owner, Category category, String shortText, String longText, Date vonDate, Date bisDate, String reiseart) {
+    public Trip(User owner, Country country, String shortText, String longText, Date vonDate, Date bisDate, String reiseart) {
         this.owner = owner;
-        this.category = category;
+        this.country = country;
         this.shortText = shortText;
         this.longText = longText;
         this.vonDate = vonDate;
@@ -105,12 +105,12 @@ public class Trip implements Serializable {
         this.owner = owner;
     }
 
-    public Category getCategory() {
-        return category;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getShortText() {

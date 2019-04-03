@@ -41,12 +41,12 @@
         <form method="GET" class="horizontal" id="search">
             <input type="text" name="search_text" value="${param.search_text}" placeholder="Ort"/>
 
-            <select name="search_category">
+            <select name="search_country">
                 <option value="">Alle Länder</option>
 
-                <c:forEach items="${categories}" var="category">
-                    <option value="${category.id}" ${param.search_category == category.id ? 'selected' : ''}>
-                        <c:out value="${category.name}" />
+                <c:forEach items="${categories}" var="country">
+                    <option value="${country.id}" ${param.search_country == country.id ? 'selected' : ''}>
+                        <c:out value="${country.name}" />
                     </option>
                 </c:forEach>
             </select>
@@ -94,7 +94,7 @@
                                 <c:out value="${trip.shortText}"/>
                             </td>
                             <td>
-                                <c:out value="${trip.category.name}"/>
+                                <c:out value="${trip.country.name}"/>
                             </td>
                             <td>
                                 <c:out value="${trip.owner.username}"/>

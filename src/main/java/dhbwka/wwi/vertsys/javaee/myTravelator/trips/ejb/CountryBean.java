@@ -10,7 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb;
 
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -20,10 +20,10 @@ import javax.ejb.Stateless;
  */
 @Stateless
 @RolesAllowed("app-user")
-public class CategoryBean extends EntityBean<Category, Long> {
+public class CountryBean extends EntityBean<Country, Long> {
 
-    public CategoryBean() {
-        super(Category.class);
+    public CountryBean() {
+        super(Country.class);
     }
 
     /**
@@ -31,7 +31,7 @@ public class CategoryBean extends EntityBean<Category, Long> {
      *
      * @return Liste mit allen Kategorien
      */
-    public List<Category> findAllSorted() {
-        return this.em.createQuery("SELECT c FROM Category c ORDER BY c.name").getResultList();
+    public List<Country> findAllSorted() {
+        return this.em.createQuery("SELECT c FROM Country c ORDER BY c.name").getResultList();
     }
 }

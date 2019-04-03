@@ -10,7 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb;
 
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Trip;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.TripStatus;
 import java.util.List;
@@ -50,11 +50,11 @@ public class TripBean extends EntityBean<Trip, Long> {
      * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
      * 
      * @param search In der Kurzbeschreibung enthaltener Text (optional)
-     * @param category Kategorie (optional)
+     * @param country Kategorie (optional)
      * @param status Status (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Trip> search(String search, Category category, TripStatus status) {
+    public List<Trip> search(String search, Country country, TripStatus status) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
@@ -74,9 +74,9 @@ public class TripBean extends EntityBean<Trip, Long> {
             query.where(p);
         }
         
-        // WHERE t.category = :category
-        if (category != null) {
-            p = cb.and(p, cb.equal(from.get("category"), category));
+        // WHERE t.country = :country
+        if (country != null) {
+            p = cb.and(p, cb.equal(from.get("country"), country));
             query.where(p);
         }
         

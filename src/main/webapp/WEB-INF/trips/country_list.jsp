@@ -19,7 +19,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/category_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/country_list.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -66,10 +66,10 @@
                 <c:otherwise>
                     <div>
                         <div class="margin">
-                            <c:forEach items="${categories}" var="category">
-                                <input type="checkbox" name="category" id="${'category-'.concat(category.id)}" value="${category.id}" />
-                                <label for="${'category-'.concat(category.id)}">
-                                    <c:out value="${category.name}"/>
+                            <c:forEach items="${categories}" var="country">
+                                <input type="checkbox" name="country" id="${'country-'.concat(country.id)}" value="${country.id}" />
+                                <label for="${'country-'.concat(country.id)}">
+                                    <c:out value="${country.name}"/>
                                 </label>
                                 <br />
                             </c:forEach>

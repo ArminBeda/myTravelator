@@ -59,16 +59,16 @@
                     <input type="text" name="trip_owner" value="${trip_form.values["trip_owner"][0]}" readonly="readonly">
                 </div>
 
-                <label for="trip_category">Land:</label>
+                <label for="trip_country">Land:</label>
                 <div class="side-by-side">
-                    <select onchange="newLand(this)" name="trip_category">
+                    <select onchange="newCountry(this)" name="trip_country">
                         <option value="">Bitte ein Land auswählen</option>
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${trip_form.values["trip_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
+                        <c:forEach items="${categories}" var="country">
+                            <option value="${country.id}" ${trip_form.values["trip_country"][0] == country.id.toString() ? 'selected' : ''}>
+                                <c:out value="${country.name}" />
                             </option>
                         </c:forEach>
-                        <option id="new" value="<c:url value="/app/trips/categories/"/>">+ Neues Land hinzufügen</option>
+                        <option id="new" value="<c:url value="/app/trips/categories/"/>">+ Neues Country hinzufügen</option>
                     </select>
                 </div>
 
@@ -141,7 +141,7 @@
             </c:if>
         </form>                 
         <script>
-        function newLand(option){
+        function newCountry(option){
             if(option[option.selectedIndex].id==="new"){
                 window.location = option[option.selectedIndex].value;
             }

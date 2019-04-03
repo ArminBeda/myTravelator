@@ -10,9 +10,9 @@
 package dhbwka.wwi.vertsys.javaee.myTravelator.trips.web;
 
 import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.CountryBean;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.ejb.TripBean;
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Trip;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.TripStatus;
 import java.io.IOException;
@@ -32,7 +32,7 @@ import javax.servlet.http.HttpSession;
 public class TripListServlet extends HttpServlet {
 
     @EJB
-    private CategoryBean categoryBean;
+    private CountryBean countryBean;
     
     @EJB
     private TripBean tripBean;
@@ -42,23 +42,23 @@ public class TripListServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
-        request.setAttribute("categories", this.categoryBean.findAllSorted());
+        request.setAttribute("categories", this.countryBean.findAllSorted());
         request.setAttribute("statuses", TripStatus.values());
 
         // Suchparameter aus der URL auslesen
         String searchText = request.getParameter("search_text");
-        String searchCategory = request.getParameter("search_category");
+        String searchCountry = request.getParameter("search_country");
         String searchStatus = request.getParameter("search_status");
 
         // Anzuzeigende Aufgaben suchen
-        Category category = null;
+        Country country = null;
         TripStatus status = null;
 
-        if (searchCategory != null) {
+        if (searchCountry != null) {
             try {
-                category = this.categoryBean.findById(Long.parseLong(searchCategory));
+                country = this.countryBean.findById(Long.parseLong(searchCountry));
             } catch (NumberFormatException ex) {
-                category = null;
+                country = null;
             }
         }
 
@@ -71,7 +71,7 @@ public class TripListServlet extends HttpServlet {
 
         }
 
-        List<Trip> trips = this.tripBean.search(searchText, category, status);
+        List<Trip> trips = this.tripBean.search(searchText, country, status);
         request.setAttribute("trips", trips);
         
 

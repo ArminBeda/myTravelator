@@ -9,7 +9,7 @@
  */
 package service;
 
-import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -29,27 +29,27 @@ import javax.ws.rs.core.MediaType;
  * @author yusefoenkol
  */
 @Stateless
-@Path("api/category")
-public class CategoryFacadeREST extends AbstractFacade<Category> {
+@Path("api/country")
+public class CountryFacadeREST extends AbstractFacade<Country> {
 
     @PersistenceContext(unitName = "default")
     private EntityManager em;
 
-    public CategoryFacadeREST() {
-        super(Category.class);
+    public CountryFacadeREST() {
+        super(Country.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(Category entity) {
+    public void create(Country entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") Long id, Category entity) {
+    public void edit(@PathParam("id") Long id, Country entity) {
         super.edit(entity);
     }
 
@@ -62,21 +62,21 @@ public class CategoryFacadeREST extends AbstractFacade<Category> {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Category find(@PathParam("id") Long id) {
+    public Country find(@PathParam("id") Long id) {
         return super.find(id);
     }
 
     @GET
     @Override
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Category> findAll() {
+    public List<Country> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Category> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    public List<Country> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
