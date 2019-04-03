@@ -89,7 +89,8 @@ select {
     padding: 0.5em;
     margin: 0;
     outline: none;
-    background: white;
+    background: grey;
+    opacity: 0.2;
 }
 
 textarea {

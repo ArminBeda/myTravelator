@@ -11,9 +11,8 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 html {
     font-family: sans-serif;
     font-size: 12pt;
-    
-    /* https://picsum.photos/5472/3648?image=821 */
-    background-image: url(https://picsum.photos/2048/1365?image=453);
+
+    background-image: url(https://images.pexels.com/photos/248159/pexels-photo-248159.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -24,20 +23,23 @@ html, body {
 }
 
 h1 {
-    color: crimson;
-    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+    color: rgba(83, 149, 176, 0.9) !important;
 }
 
 .user {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(146, 95, 99, 0.8)!important;
     border-radius: 0.5em;
     padding: 1em;
     margin: 1em;
-    
-    border: 1px solid rgba(255, 255, 255, 0.75);
+    border: 0.5px solid rgb(47, 43, 41)!important;
 }
 
 .label {
-    color: rgb(255,255,255);
+    color: rgb(255,255,255)!important;
+    font-weight: bold !important;
+}
+
+#searchbtn {
+    margin-top: 1em !important;
 }

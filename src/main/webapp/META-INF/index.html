@@ -13,9 +13,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
         <title>REST-Client MyTravelator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <link rel="stylesheet" href="form.css">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
         <script src="UserResource.js"></script>
     </head>
@@ -23,35 +26,20 @@ Creative Commons Namensnennung 4.0 International Lizenz.
         <h1>REST-Client MyTravelator</h1>
 
         <!-- Felder, um einen neuen Song anzulegen -->
-        <div class="song stacked">
+        
             <div class="column">
                 <label class="label" for="new_song_name">Username:</label>
                 <div class="side-by-side">
                     <input type="text" id="username">
                 </div>
 
-                <!--<label for="new_song_artist">Künstler:</label>
                 <div class="side-by-side">
-                    <input type="text" id="new_song_artist">
-                </div>
-
-                <label for="new_song_songwriters">Songwriter:</label>
-                <div class="side-by-side">
-                    <input type="text" id="new_song_songwriters">
-                </div>
-
-                <label for="new_song_release_year">Jahr:</label>
-                <div class="side-by-side">
-                    <input type="number" id="new_song_release_year">
-                </div>-->
-
-                <div class="side-by-side">
-                    <button onclick="reloadUser()">
+                    <button id="searchbtn" class="btn btn-success" onclick="reloadUser()">
                         Suchen
                     </button>
                 </div>
             </div>
-        </div>
+        
 
         <!-- Platzhalter für die vorhandenen Songs -->
         <div id="user"></div>

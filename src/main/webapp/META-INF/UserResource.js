@@ -12,7 +12,7 @@ class UserResource {
      * @param {String} url Basis-URL des REST-Webservices (optional)
      */
     constructor(url) {
-        this.url = url || "https://localhost:8443/jTodo/webresources/api/user/";
+        this.url = url || "https://localhost:8443/myTravelator/webresources/api/user/";
         this.username = "";
         this.password = "";
     }
