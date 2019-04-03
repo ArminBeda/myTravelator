@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
  * @author yusefoenkol
  */
 @Stateless
-@Path("api/category")
+@Path("/api/category")
 public class CategoryFacadeREST extends AbstractFacade<Category> {
 
     @PersistenceContext(unitName = "default")

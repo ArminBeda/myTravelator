@@ -32,7 +32,7 @@ import service.dataClasses.UserFacade;
  * @author yusefoenkol
  */
 @Stateless
-@Path("api/user")
+@Path("/api/user")
 public class UserFacadeREST extends AbstractFacade<User> {
 
     @PersistenceContext(unitName = "default")
@@ -65,11 +65,18 @@ public class UserFacadeREST extends AbstractFacade<User> {
         super.remove(super.find(id));
     }
 
-    @GET
+    /*@GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public User find(@PathParam("id") String id) {
         return super.find(id);
+    }*/
+    
+    @GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public UserDTO find(@PathParam("id") String id) {
+        return userFacade.findUser(id);
     }
 
     //@GET

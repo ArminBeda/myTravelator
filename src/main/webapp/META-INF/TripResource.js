@@ -5,14 +5,14 @@
  * dieselben Methoden besitzt. Hier rufen wir jedoch den REST-Webservice des
  * Servers auf, anstelle direkt auf eine Datenbank zuzugreifen.
  */
-class UserResource {
+class TripResource {
 
     /**
      * Konstruktor.
      * @param {String} url Basis-URL des REST-Webservices (optional)
      */
     constructor(url) {
-        this.url = url || "https://localhost:8443/myTravelator/api/user/";
+        this.url = url || "https://localhost:8443/myTravelator/api/task/";
         this.username = "";
         this.password = "";
     }
@@ -54,6 +54,16 @@ class UserResource {
      * @returns {Promise} Gefundener Song
      */
     async getUser() {
+        let response = await fetch(this.url,{
+            headers: {
+                "accept": "application/json"
+            }
+        });
+
+        return await response.json();
+    }
+    
+    async getTrip() {
         let response = await fetch(this.url,{
             headers: {
                 "accept": "application/json"
