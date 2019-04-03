@@ -65,13 +65,20 @@ public class TripFacadeREST extends AbstractFacade<Trip> {
         super.remove(super.find(id));
     }
 
+    /*@GET
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Task find(@PathParam("id") Long id) {
+        return super.find(id);
+    }*/
+
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Trip find(@PathParam("id") Long id) {
         return super.find(id);
     }
-
+    
    /* @GET
     @Override
     @Produces(MediaType.APPLICATION_JSON)

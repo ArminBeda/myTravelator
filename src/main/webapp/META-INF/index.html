@@ -10,17 +10,14 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 -->
 <html>
     <head>
-        <title>REST-Client MyTravelator</title>
+        <title>RESTClient MyTravelator</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <meta name="viewport" content="width=device-width, height=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="form.css">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
         <script src="UserResource.js"></script>
+        <script src="TripResource.js"></script>
     </head>
     <body>
         <h1>REST-Client MyTravelator</h1>
@@ -34,21 +31,31 @@ Creative Commons Namensnennung 4.0 International Lizenz.
                 </div>
 
                 <div class="side-by-side">
-                    <button id="searchbtn" class="btn btn-success" onclick="reloadUser()">
+                    <button id="searchbtn" onclick="reloadUser()">
+                        Suchen
+                    </button>
+                </div>
+                
+                <div class="side-by-side">
+                    <button id="searchbtn" onclick="reloadTrip()">
                         Suchen
                     </button>
                 </div>
             </div>
         
 
-        <!-- Platzhalter für die vorhandenen Songs -->
+        <!-- Platzhalter für Entity user, trip, country -->
         <div id="user"></div>
-
+        
+        <div id="trip"></div>
+        
+        <div id="country"></div> 
+        
         <!-- Ab hier fängt es an, Spaß zu machen 🤩 -->
         <script>
             userResource = new UserResource();
 
-            // Speichern eines neuen Songs
+            // Speichern eines neuen Users
             let reloadUser = async () => {
                 let response = await userResource.getUser( );
 
@@ -66,8 +73,30 @@ Creative Commons Namensnennung 4.0 International Lizenz.
                         userElement.innerHTML = `<b>${user.username}</b> <br/>`;
                     });
                 }
+            };
+        </script>
+        
+        <script>
+            tripResource = new TripResource();
+            
+            // Speichern eines neuen Users
+            let reloadTrip = async () => {
+                let response = await tripResource.getTrip( );
 
-
+                if ("exception" in response) {
+                    alert(`[${response.exception}]: ${response.message}`)
+                } else {
+                    let tripsElement = document.getElementById("trip");
+                    
+                    tripsElement.innerHTML = "";
+                    response.forEach(trip => {
+                        // Empfangene Daten anzeigen
+                        let tripElement = document.createElement("div");
+                        tripElement.classList.add("user");
+                        tripsElement.appendChild(tripElement);
+                        tripElement.innerHTML = `<b>${trip.city}</b> <br/>`;
+                    });
+                }
             };
         </script>
     </body>
