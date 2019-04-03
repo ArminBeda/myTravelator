@@ -20,12 +20,12 @@ import java.util.Date;
 public class TripDTO {
     private long id;
     private UserDTO owner;
-    private String city;
+    private String destination;
     private String description;
     private String typeOfTravel;
-    private TripStatus status;
-    private Date vonDate;
-    private Date bisDate;
+    private StatusDTO status;
+    private String vonDate;
+    private String bisDate;
 
     public TripDTO() {
     }
@@ -34,12 +34,12 @@ public class TripDTO {
     public TripDTO(Trip trip){
         this.id = trip.getId();
         this.owner = new UserDTO(trip.getOwner());
-        this.city = trip.getShortText();
+        this.destination = trip.getShortText();
         this.description = trip.getLongText();
-        this.typeOfTravel = trip.getLongText();
-        this.vonDate = trip.getvonDate();
-        this.bisDate = trip.getbisDate();
-        this.status = trip.getStatus();
+        this.typeOfTravel = trip.getReiseart();
+        this.vonDate = trip.getvonDate().toString();
+        this.bisDate = trip.getbisDate().toString();
+        this.status = new StatusDTO(trip.getStatus());
         
         
     }
@@ -60,13 +60,15 @@ public class TripDTO {
         this.owner = owner;
     }
 
-    public String getCity() {
-        return city;
+
+    public String getDestination() {
+        return destination;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
+    
 
     public String getDescription() {
         return description;
@@ -84,30 +86,32 @@ public class TripDTO {
         this.typeOfTravel = typeOfTravel;
     }
 
-    public TripStatus getStatus() {
+    public StatusDTO getStatus() {
         return status;
     }
 
-    public void setStatus(TripStatus status) {
+    public void setStatus(StatusDTO status) {
         this.status = status;
     }
 
-    public Date getVonDate() {
+    public String getVonDate() {
         return vonDate;
     }
 
-    public void setVonDate(Date vonDate) {
+    public void setVonDate(String vonDate) {
         this.vonDate = vonDate;
     }
 
-    public Date getBisDate() {
+    public String getBisDate() {
         return bisDate;
     }
 
-    public void setBisDate(Date bisDate) {
+    public void setBisDate(String bisDate) {
         this.bisDate = bisDate;
     }
-    
 
+
+
+    
     
 }
