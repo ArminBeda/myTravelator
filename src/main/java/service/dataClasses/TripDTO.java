@@ -9,8 +9,11 @@
  */
 package service.dataClasses;
 
+import dhbwka.wwi.vertsys.javaee.myTravelator.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Trip;
 import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.TripStatus;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -24,11 +27,15 @@ public class TripDTO {
     private String description;
     private String typeOfTravel;
     private StatusDTO status;
-    private String vonDate;
-    private String bisDate;
+    private String from;
+    private String to;
 
     public TripDTO() {
     }
+   
+    Format formatter = new SimpleDateFormat("dd.MM.yyyy");
+
+
    
     
     public TripDTO(Trip trip){
@@ -37,8 +44,8 @@ public class TripDTO {
         this.destination = trip.getShortText();
         this.description = trip.getLongText();
         this.typeOfTravel = trip.getReiseart();
-        this.vonDate = trip.getvonDate().toString();
-        this.bisDate = trip.getbisDate().toString();
+        this.from = formatter.format(trip.getvonDate());
+        this.to = formatter.format(trip.getbisDate());
         this.status = new StatusDTO(trip.getStatus());
         
         
@@ -94,21 +101,23 @@ public class TripDTO {
         this.status = status;
     }
 
-    public String getVonDate() {
-        return vonDate;
+    public String getFrom() {
+        return from;
     }
 
-    public void setVonDate(String vonDate) {
-        this.vonDate = vonDate;
+    public void setFrom(String from) {
+        this.from = from;
     }
 
-    public String getBisDate() {
-        return bisDate;
+    public String getTo() {
+        return to;
     }
 
-    public void setBisDate(String bisDate) {
-        this.bisDate = bisDate;
+    public void setTo(String to) {
+        this.to = to;
     }
+
+    
 
 
 
