@@ -32,5 +32,14 @@ public class TripFacade {
             TripDTO tripDTO = new TripDTO(trip);
             return tripDTO;
         }).collect(Collectors.toList());
-    }    
+    } 
+    
+    public List<TripDTO> findAllDestination(String ort){
+        List<Trip> result_trips = tripBean.findTripsDestination(ort);
+        return result_trips.stream().map((trip)->
+        {
+            TripDTO tripDTO = new TripDTO(trip);
+            return tripDTO;
+        }).collect(Collectors.toList());
+    }
 }

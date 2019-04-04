@@ -44,6 +44,19 @@ public class TripBean extends EntityBean<Trip, Long> {
     }
     
     /**
+     * Sucht alle Trips heraus, welche den Ort x gesetzt haben
+     * @param ort Ort/Destination
+     * @return  aller Trips auf die das gesuchte zutrifft
+     */
+    
+    
+    public List<Trip> findTripsDestination(String ort){
+        return em.createQuery("SELECT t FROM Trip t WHERE t.shortText = :ort ORDER BY t.vonDate")
+                .setParameter("ort", ort)
+                .getResultList();
+    }
+    
+    /**
      * Suche nach Aufgaben anhand ihrer Bezeichnung, Kategorie und Status.
      * 
      * Anders als in der Vorlesung behandelt, wird die SELECT-Anfrage hier

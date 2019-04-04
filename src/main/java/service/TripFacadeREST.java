@@ -65,21 +65,22 @@ public class TripFacadeREST extends AbstractFacade<Trip> {
         super.remove(super.find(id));
     }
 
-    /*@GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Task find(@PathParam("id") Long id) {
-        return super.find(id);
-    }*/
-
+    
     @GET
+    @Path("destination/{ort}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<TripDTO> find(@PathParam("ort") String ort) {
+        return tripFacade.findAllDestination(ort);
+    }
+
+   @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Trip find(@PathParam("id") Long id) {
         return super.find(id);
     }
     
-   /* @GET
+    /*@GET
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public List<Trip> findAll() {
