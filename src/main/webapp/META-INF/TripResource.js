@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Von der Klasse SongResource des Servers abgeleitete Klasse, die im Prinzip
+ * Von der Klasse TripResource des Servers abgeleitete Klasse, die im Prinzip
  * dieselben Methoden besitzt. Hier rufen wir jedoch den REST-Webservice des
  * Servers auf, anstelle direkt auf eine Datenbank zuzugreifen.
  */
@@ -27,66 +27,27 @@ class TripResource {
         this.password = password;
     }
 
-    /**
-     * Songs suchen.
-     * @param {String} query Suchparameter (optional)
-     * @returns {Promise} Gefundene Songs
-     */
-    
-    async findUser(query) {
-        let url = this.url;
+    async findTrip(trip_query) {
 
-        if (query !== undefined) {
-            url += "?query=" + encodeURI(query);
-        }
+        let url = this.url;
+        url = url + trip_query;
 
         let response = await fetch(url, {
             headers: {
-                "accept": "application/json"
+                "accept": "application/json",
+                "authorization": "Basic " + btoa(this.username + ":" + this.password)
             }
         });
 
         return await response.json();
     }
     
-    /**
-     * Einzelnen Song auslesen.
-     * @returns {Promise} Gefundener Song
-     */
-    async getUser() {
+    async getTripList() {
         let response = await fetch(this.url,{
-            headers: {
-                "accept": "application/json"
-            }
-        });
-
-        return await response.json();
-    }
-    
-    async getTrip() {
-        let response = await fetch(this.url,{
-            headers: {
-                "accept": "application/json"
-            }
-        });
-
-        return await response.json();
-    }
-
-    /**
-     * Aktualisieren eines Songs.
-     * @param {Object} song Zu speichernder Song
-     * @returns {Promise} Gespeicherter Song
-     */
-    async updateSong(song) {
-        let response = await fetch(this.url + song.id + "/", {
-            method: "POST",
             headers: {
                 "accept": "application/json",
-                "content-type": "application/json",
                 "authorization": "Basic " + btoa(this.username + ":" + this.password)
-            },
-            body: JSON.stringify(song)
+            }
         });
 
         return await response.json();

@@ -22,13 +22,24 @@ html, body {
     min-height: 100%;
 }
 
-h1 {
+h1, h2 {
     color: rgba(83, 149, 176, 0.9) !important;
 }
 
-.user {
+.column{
+    background-color: rgba(0, 0, 0, 0.50) !important;
+    padding: 1em;
+    border-radius: 45px 5%;
+    border-color: #000000;
+    border-width: 2.2px !important;
+    border-style: solid;
+    margin: 1em;
+    width: fit-content;
+}
+
+.user{
     display: inline-block;
-    background: rgba(146, 95, 99, 0.8)!important;
+    background: rgba(217, 217, 217,0.4)!important;
     border-radius: 0.5em;
     padding: 1em;
     margin: 1em;
@@ -38,16 +49,60 @@ h1 {
 .label {
     color: rgb(255,255,255)!important;
     font-weight: bold !important;
+    margin-top:5px;
+    display:inline-block;
 }
 
 #searchbtn {
     margin-top: 1em !important;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+    background-color: rgba(189, 142, 98, 0.6);
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
+
+#searchbtnList {
+    margin-top: 1em !important;
+    background-color: rgba(155, 75, 18, 0.4) !important;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#user {
+    background: rgba(0, 0, 0, 0.50);
+    margin: 1em;
+    display: contents;
+}
+
+#trip {
+    background: rgba(0, 0, 0, 0.50);
+    margin: 1em;
+    display: contents;
+} 
+
+#country {
+    background: rgba(0, 0, 0, 0.50);
+    margin: 1em;
+    display: contents;
+}
+
+#loginColumn {
+    display: inline-block;
+}
+
+#row {
+    display: -webkit-flex !important;
+    display: -ms-flexbox;
+    display: flex !important;
+    flex-direction: row !important;
+}
+

@@ -1,18 +1,18 @@
 "use strict";
 
 /**
- * Von der Klasse UserResource des Servers abgeleitete Klasse, die im Prinzip
+ * Von der Klasse CountryResource des Servers abgeleitete Klasse, die im Prinzip
  * dieselben Methoden besitzt. Hier rufen wir jedoch den REST-Webservice des
  * Servers auf, anstelle direkt auf eine Datenbank zuzugreifen.
  */
-class UserResource {
+class CountryResource {
 
     /**
      * Konstruktor.
      * @param {String} url Basis-URL des REST-Webservices (optional)
      */
     constructor(url) {
-        this.url = url || "https://localhost:8443/myTravelator/api/user/";
+        this.url = url || "https://localhost:8443/myTravelator/api/category/";
         this.username = "";
         this.password = "";
     }
@@ -26,24 +26,25 @@ class UserResource {
         this.username = username;
         this.password = password;
     }
-
-    async findUser(username_query) {
-
+    
+    async findUser(query) {
         let url = this.url;
-        url = url + username_query;
+
+        if (query !== undefined) {
+            url += "?query=" + encodeURI(query);
+        }
 
         let response = await fetch(url, {
             headers: {
-                "accept": "application/json",
-                "authorization": "Basic " + btoa(this.username + ":" + this.password)
+                "accept": "application/json"
             }
         });
 
         return await response.json();
     }
-
-    async getUserList() {
-        let response = await fetch(this.url, {
+   
+    async getCountry() {
+        let response = await fetch(this.url,{
             headers: {
                 "accept": "application/json",
                 "authorization": "Basic " + btoa(this.username + ":" + this.password)
