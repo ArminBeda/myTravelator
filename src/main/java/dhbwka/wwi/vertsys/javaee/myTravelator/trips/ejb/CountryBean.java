@@ -25,6 +25,18 @@ public class CountryBean extends EntityBean<Country, Long> {
     public CountryBean() {
         super(Country.class);
     }
+    
+    /**
+     * Liefert Country zurück, welches Namen entspricht
+     * @param name
+     */
+    
+    public List<Country> findCountry(String name){
+        return em.createQuery("Select c from Country c where c.name = :name")
+                .setParameter("name", name)
+                .getResultList();
+    }
+   
 
     /**
      * Auslesen aller Kategorien, alphabetisch sortiert.
