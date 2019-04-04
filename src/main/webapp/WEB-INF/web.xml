@@ -8,7 +8,7 @@
     <!--
         Authentifizierung / Authorisierung
         ==================================
-        s
+        
         Alle URLs, die mit /app/ beginnen, können nur aufgerufen werden,
         wenn der Anwender sich mit einem gültigen Benutzer eingeloggt hat.
         Der Versuch, eine solche Seite aufzrufen, ohne eingeloggt zu sein,
@@ -17,7 +17,6 @@
         Vgl. https://stackoverflow.com/questions/3134228/restrict-jsp-servlet-access-to-specific-users-only/3134323#3134323
         Vgl. https://docs.oracle.com/javaee/7/tutorial/security-advanced003.htm
         Vgl. https://dzone.com/articles/jdbc-realm-and-form-based
-<<<<<<< HEAD
     --> 
     <filter>
         <filter-name>CorsFilter</filter-name>
@@ -52,24 +51,20 @@
         <url-pattern>/app/*</url-pattern>
     </filter-mapping>
     
-    <filter>
-        <filter-name>BasicAuthFilter</filter-name>
-        <filter-class>dhbwka.wwi.vertsys.javaee.jtodo.common.web.BasicLoginFilter</filter-class>
-=======
-    -->
+
     <filter>
         <filter-name>BasicLoginFilter</filter-name>
         <filter-class>dhbwka.wwi.vertsys.javaee.myTravelator.common.web.BasicLoginFilter</filter-class>
->>>>>>> 733d3c10d72598ceb93b4081de53589b81234b82
         <init-param>
             <param-name>role-names-comma-sep</param-name>
             <param-value>app-user</param-value>
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>BasicAuthFilter</filter-name>
+        <filter-name>BasicLoginFilter</filter-name>
         <url-pattern>/api/*</url-pattern>
     </filter-mapping>
+    
     <security-constraint>
         <display-name>
             Geschützter Bereich für angemeldete Benutzer

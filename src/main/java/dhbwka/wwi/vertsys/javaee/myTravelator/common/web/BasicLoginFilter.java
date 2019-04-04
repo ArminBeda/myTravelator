@@ -1,51 +1,8 @@
-/**
- *
- * @author Martin Kutscher
- *
- * This Filter is required to support "Form Auth" and "Basic Auth" methods alongside in the same web application on the TomEE.
- * It can be configured via web.xml via role parameter "role-names-comma-sep" (role names as comma separated list, e.g. admin,user,read-only) and url pattern for endpoints.
- * The Filter will read the HTTP Request Header "Authorization" and decode the Base64 Credentials. Afterwards, the user is logged in via role-checking against standard Principal.
- *
- * <filter>
-<<<<<<< HEAD:src/main/java/dhbwka/wwi/vertsys/javaee/jtodo/common/web/BasicLoginFilter.java
- * <filter-name>BasicLoginFilter</filter-name>
- * <filter-class>dhbwka.wwi.vertsys.javaee.jtodo.common.web.BasicLoginFilter</filter-class>
- * <init-param>
- * <param-name>role-names-comma-sep</param-name>
- * <param-value>app-user</param-value>
- * </init-param>
- * </filter>
- * <filter-mapping>
- * <filter-name>BasicLoginFilter</filter-name>
- * <url-pattern>/api/*</url-pattern>
- * </filter-mapping>
- *
- *
- * c.f. :
- * https://stackoverflow.com/questions/27588665/how-do-i-configure-both-basic-and-form-authentication-methods-in-the-same-java-e
- *
-=======
-      <filter-name>BasicLoginFilter</filter-name>
-      <filter-class>dhbwka.wwi.vertsys.javaee.myTravelator.common.web.BasicLoginFilter</filter-class>
-      <init-param>
-        <param-name>role-names-comma-sep</param-name>
-        <param-value>app-user</param-value>
-      </init-param>
-    </filter>
-    <filter-mapping>
-      <filter-name>BasicLoginFilter</filter-name>
-      <url-pattern>/api/*</url-pattern>
-    </filter-mapping>
- * 
- * 
- *  c.f. :  https://stackoverflow.com/questions/27588665/how-do-i-configure-both-basic-and-form-authentication-methods-in-the-same-java-e
- * 
->>>>>>> 733d3c10d72598ceb93b4081de53589b81234b82:src/main/java/dhbwka/wwi/vertsys/javaee/myTravelator/common/web/BasicLoginFilter.java
- */
+
 package dhbwka.wwi.vertsys.javaee.myTravelator.common.web;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.myTravelator.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.myTravelator.common.jpa.User;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Base64;
@@ -84,6 +41,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * Vgl.
  * https://stackoverflow.com/questions/27588665/how-do-i-configure-both-basic-and-form-authentication-methods-in-the-same-java-e
+ */
+/**
+ * @author yusefoenkol
  */
 public class BasicLoginFilter implements Filter {
 

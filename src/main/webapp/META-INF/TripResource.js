@@ -12,7 +12,7 @@ class TripResource {
      * @param {String} url Basis-URL des REST-Webservices (optional)
      */
     constructor(url) {
-        this.url = url || "https://localhost:8443/myTravelator/api/task/";
+        this.url = url || "https://localhost:8443/myTravelator/api/trip/";
         this.username = "";
         this.password = "";
     }
@@ -30,7 +30,7 @@ class TripResource {
     async findTrip(trip_query) {
 
         let url = this.url;
-        url = url + trip_query;
+        url = url + "destination/" +trip_query;
 
         let response = await fetch(url, {
             headers: {

@@ -32,7 +32,7 @@ import service.dataClasses.CountryFacade;
  * @author yusefoenkol
  */
 @Stateless
-@Path("api/country")
+@Path("/api/country")
 public class CountryFacadeREST extends AbstractFacade<Country> {
 
     @PersistenceContext(unitName = "default")

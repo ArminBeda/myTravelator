@@ -32,7 +32,7 @@ import service.dataClasses.TripFacade;
  * @author yusefoenkol
  */
 @Stateless
-@Path("api/trip")
+@Path("/api/trip")
 public class TripFacadeREST extends AbstractFacade<Trip> {
 
     @PersistenceContext(unitName = "default")

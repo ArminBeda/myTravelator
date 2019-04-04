@@ -12,7 +12,7 @@ class CountryResource {
      * @param {String} url Basis-URL des REST-Webservices (optional)
      */
     constructor(url) {
-        this.url = url || "https://localhost:8443/myTravelator/api/category/";
+        this.url = url || "https://localhost:8443/myTravelator/api/country/";
         this.username = "";
         this.password = "";
     }
@@ -27,23 +27,22 @@ class CountryResource {
         this.password = password;
     }
     
-    async findUser(query) {
-        let url = this.url;
+    async findCountry(country_query) {
 
-        if (query !== undefined) {
-            url += "?query=" + encodeURI(query);
-        }
+        let url = this.url;
+        url = url + "name/" +country_query;
 
         let response = await fetch(url, {
             headers: {
-                "accept": "application/json"
+                "accept": "application/json",
+                "authorization": "Basic " + btoa(this.username + ":" + this.password)
             }
         });
 
         return await response.json();
     }
    
-    async getCountry() {
+    async getCountryList() {
         let response = await fetch(this.url,{
             headers: {
                 "accept": "application/json",
