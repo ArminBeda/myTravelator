@@ -9,7 +9,7 @@
  */
 package service;
 
-import dhbwka.wwi.vertsys.javaee.myTravelator.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.myTravelator.trips.jpa.Country;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,78 +24,72 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import service.dataClasses.UserDTO;
-import service.dataClasses.UserFacade;
+import service.dataClasses.CountryDTO;
+import service.dataClasses.CountryFacade;
 
 /**
  *
  * @author yusefoenkol
  */
 @Stateless
-@Path("/api/user")
-public class UserFacadeREST extends AbstractFacade<User> {
+@Path("api/country")
+public class CountryFacadeREST extends AbstractFacade<Country> {
 
     @PersistenceContext(unitName = "default")
     private EntityManager em;
     
     @EJB
-    UserFacade userFacade;
+    CountryFacade countryFacade;
 
-    public UserFacadeREST() {
-        super(User.class);
+    public CountryFacadeREST() {
+        super(Country.class);
     }
 
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void create(User entity) {
+    public void create(Country entity) {
         super.create(entity);
     }
 
     @PUT
     @Path("{id}")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void edit(@PathParam("id") String id, User entity) {
+    public void edit(@PathParam("id") Long id, Country entity) {
         super.edit(entity);
     }
 
     @DELETE
     @Path("{id}")
-    public void remove(@PathParam("id") String id) {
+    public void remove(@PathParam("id") Long id) {
         super.remove(super.find(id));
     }
 
-    /*@GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public User find(@PathParam("id") String id) {
-        return super.find(id);
-    }*/
-    
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public UserDTO find(@PathParam("id") String id) {
-        return userFacade.findUser(id);
+    public Country find(@PathParam("id") Long id) {
+        return super.find(id);
+    }
+    
+    @GET
+    @Path("/name/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CountryDTO> findCountry(@PathParam("name") String name) {
+        return countryFacade.findCountry(name);
     }
 
-    //@GET
-    //@Override
-    //@Produces(MediaType.APPLICATION_XML)
-    //public List<User> findAll() {
-    //    return super.findAll();
-    //}
-    
     @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public List<UserDTO> findAllDTO() {
-        return userFacade.findAll();
+    @Override
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Country> findAll() {
+        return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public List<User> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Country> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
 
