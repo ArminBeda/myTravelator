@@ -28,6 +28,7 @@ public class TripDTO {
     private String typeOfTravel;
     private StatusDTO status;
     private String from;
+    private CountryDTO country;
     private String to;
 
     public TripDTO() {
@@ -46,6 +47,7 @@ public class TripDTO {
         this.typeOfTravel = trip.getReiseart();
         this.from = formatter.format(trip.getvonDate());
         this.to = formatter.format(trip.getbisDate());
+        this.country = new CountryDTO(trip.getCountry());
         this.status = new StatusDTO(trip.getStatus());
         
         
@@ -117,9 +119,13 @@ public class TripDTO {
         this.to = to;
     }
 
-    
+    public CountryDTO getCountry() {
+        return country;
+    }
 
-
+    public void setCountry(CountryDTO country) {
+        this.country = country;
+    }
 
     
     
