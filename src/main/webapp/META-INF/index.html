@@ -7,12 +7,15 @@ Webseite: https://www.wpvs.de/
 
 Dieser Quellcode ist lizenziert unter einer
 Creative Commons Namensnennung 4.0 International Lizenz.
+
+* @author yusefoenkol
 -->
 <html>
     <head>
         <title>RESTClient MyTravelator</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, height=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.png">
         <link rel="stylesheet" href="form.css">
         <link rel="stylesheet" href="style.css">
 
@@ -29,13 +32,13 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 
             <div class="column" id="loginColumn">
                 <h2>LogIn</h2>
-                <label class="label" for="form_login_username">Username:</label>
+                <label class="label" for="form_login_username">Username: <span class="required">*</span></label>
                 <div class="side-by-side">
-                    <input type="text" id="username_login">
+                    <input type="text" id="username_login" required>
                 </div>
-                <label class="label" for="form_login_password">Password:</label>
+                <label class="label" for="form_login_password">Password: <span class="required">*</span></label>
                 <div class="side-by-side">
-                    <input type="password" id="password_login">
+                    <input type="password" id="password_login" required>
                 </div>
                 <div class="side-by-side">
                     <button id="searchbtn" onclick="setAuthDatas()">
@@ -45,9 +48,9 @@ Creative Commons Namensnennung 4.0 International Lizenz.
             </div>
 
             <div class="column">
-                <label class="label" for="form_username">Username:</label>
+                <label class="label" for="form_username">Username: <span class="required">*</span></label>
                 <div class="side-by-side">
-                    <input type="text" id="username">
+                    <input type="text" id="username" required>
                 </div>
                 <div class="side-by-side">
                     <button id="searchbtn" onclick="reloadUser()">
@@ -62,15 +65,16 @@ Creative Commons Namensnennung 4.0 International Lizenz.
                 <div id="container">
                     <div id="user"></div>
                 </div>
+                <hr id="trennlinie">
                 <div id="container">
                     <div id="userList"></div>
                 </div>
             </div>
 
             <div class="column">
-                <label class="label" for="form_trip">City:</label>
+                <label class="label" for="form_trip">City: <span class="required">*</span></label>
                 <div class="side-by-side">
-                    <input type="text" id="city">
+                    <input type="text" id="city" required>
                 </div>
                 <div class="side-by-side">
                     <button id="searchbtn" onclick="reloadTrip()">
@@ -85,15 +89,16 @@ Creative Commons Namensnennung 4.0 International Lizenz.
                 <div id="container">
                     <div id="trip"></div>
                 </div>
+                <hr id="trennlinie">
                 <div id="container">
                     <div id="tripList"></div>
                 </div>
             </div>
 
             <div class="column">
-                <label class="label" for="form_country">Country:</label>
+                <label class="label" for="form_country">Country: <span class="required">*</span></label>
                 <div class="">
-                    <input type="text" id="countryText">
+                    <input type="text" id="countryText" required>
                 </div>
                 <div class="side-by-side">
                     <button id="searchbtn" onclick="reloadCountry()">
@@ -108,12 +113,19 @@ Creative Commons Namensnennung 4.0 International Lizenz.
                 <div id="container">
                     <div id="country"></div> 
                 </div>
+                <hr id="trennlinie">
                 <div id="container">
                     <div id="countryList"></div>
                 </div>
             </div>
         </div>
-
+        <footer>
+            <div class="footer">
+                <div id="wrapper">
+                    <p id="copyright">© 2019 MyTravelator ~ Designed By VJY</p>
+                </div>
+            </div>
+        </footer>
         <!-- Ab hier fängt es an, Spaß zu machen 🤩 -->
 
         <script>
@@ -123,15 +135,18 @@ Creative Commons Namensnennung 4.0 International Lizenz.
             tripResource = new TripResource();
 
             let reloadUser = async () => {
-                let response = await userResource.findUser(document.getElementById("username").value);
-
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
+                }
+                if (document.getElementById("username").value.length == 0) {
+                    alert(`Error: Username can not be empty!`);
+                    return;
                 } else {
+                    let response = await userResource.findUser(document.getElementById("username").value);
+
                     let usersElement = document.getElementById("user");
-
                     usersElement.innerHTML = "";
-
                     let userElement = document.createElement("div");
                     userElement.classList.add("user");
                     usersElement.appendChild(userElement);
@@ -141,11 +156,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
             };
 
             let reloadUserList = async () => {
-                let response = await userResource.getUserList( );
 
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
                 } else {
+                    let response = await userResource.getUserList( );
                     let usersListElement = document.getElementById("userList");
 
                     usersListElement.innerHTML = "";
@@ -162,11 +178,16 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 
 
             let reloadTrip = async () => {
-                let response = await tripResource.findTrip(document.getElementById("city").value);
 
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
+                }
+                if (document.getElementById("city").value.length == 0) {
+                    alert(`Error: City can not be empty!`);
+                    return;
                 } else {
+                    let response = await tripResource.findTrip(document.getElementById("city").value);
                     let tripsElement = document.getElementById("trip");
 
                     tripsElement.innerHTML = "";
@@ -181,11 +202,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
             };
 
             let reloadTripList = async () => {
-                let response = await tripResource.getTripList( );
 
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
                 } else {
+                    let response = await tripResource.getTripList( );
                     let tripsListElement = document.getElementById("tripList");
 
                     tripsListElement.innerHTML = "";
@@ -202,11 +224,15 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 
 
             let reloadCountry = async () => {
-                let response = await countryResource.findCountry(document.getElementById("countryText").value);
-
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
+                }
+                if (document.getElementById("username").value.length == 0) {
+                    alert(`Error: Country can not be empty!`);
+                    return;
                 } else {
+                    let response = await countryResource.findCountry(document.getElementById("countryText").value);
                     let countriesElement = document.getElementById("country");
 
                     countriesElement.innerHTML = "";
@@ -221,11 +247,11 @@ Creative Commons Namensnennung 4.0 International Lizenz.
             };
 
             let reloadCountryList = async () => {
-                let response = await countryResource.getCountryList();
-
-                if ("exception" in response) {
-                    alert(`[${response.exception}]: ${response.message}`)
+                if ((document.getElementById("username_login").value.length == 0) && (document.getElementById("password_login").value.length == 0)) {
+                    alert(`Error: Please set your Authorization Data correctly!`);
+                    return;
                 } else {
+                    let response = await countryResource.getCountryList();
                     let countriesListElement = document.getElementById("countryList");
 
                     countriesListElement.innerHTML = "";
