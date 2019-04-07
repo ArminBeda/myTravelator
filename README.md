@@ -122,10 +122,18 @@ Screenshots
                 <img src="Settings.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
+		<td>
+            <a href="RestClient.PNG">
+                <img src="RestClient.PNG" style="display: block; width: 100%;" />
+            </a>
+        </td>
     </tr>
     <tr>
         <td>
             Settings
+        </td>
+		<td>
+            RestClient
         </td>
     </tr>
 </table>
