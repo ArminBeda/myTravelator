@@ -81,7 +81,7 @@
 
                     <%-- Button zum Abschicken --%>
                     <div id="Change_settings_button" class="side-by-side">
-                        <button class="icon-pencil" type="submit">
+                        <button type="submit">
                             Ändern
                         </button>
                     </div>

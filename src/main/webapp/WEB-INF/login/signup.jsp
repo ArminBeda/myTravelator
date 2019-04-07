@@ -84,7 +84,7 @@
 
                     <%-- Button zum Abschicken --%>
                     <div id="Sign_up_Register_Button" class="side-by-side">
-                        <button class="icon-pencil" type="submit">
+                        <button class="" type="submit">
                             Registrieren
                         </button>
                     </div>
