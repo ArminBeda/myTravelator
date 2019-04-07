@@ -49,13 +49,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="Login.png">
-                <img src="Login.png" style="display: block; width: 100%;" />
+            <a href="Login.PNG">
+                <img src="Login.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="SignUp.png">
-                <img src="SignUp.png" style="display: block; width: 100%;" />
+            <a href="SignUp.PNG">
+                <img src="SignUp.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -72,13 +72,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="Dashboard.png">
-                <img src="Dashboard.png" style="display: block; width: 100%;" />
+            <a href="Dashboard.PNG">
+                <img src="Dashboard.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="TravelList.png">
-                <img src="TravelList.png" style="display: block; width: 100%;" />
+            <a href="TravelList.PNG">
+                <img src="TravelList.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -95,13 +95,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="CreateTrip.png">
-                <img src="CreateTrip.png" style="display: block; width: 100%;" />
+            <a href="CreateTrip.PNG">
+                <img src="CreateTrip.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="CountryList.png">
-                <img src="CountryList.png" style="display: block; width: 100%;" />
+            <a href="CountryList.PNG">
+                <img src="CountryList.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -118,8 +118,8 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="Settings.png">
-                <img src="Settings.png" style="display: block; width: 100%;" />
+            <a href="Settings.PNG">
+                <img src="Settings.PNG" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
